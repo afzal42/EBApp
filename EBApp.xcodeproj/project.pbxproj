@@ -3,19 +3,62 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C3D639ED55B1F573CB414C7 /* Pods_EBApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 735831D3B8D62109037508A5 /* Pods_EBApp.framework */; };
+		FE0F493026DE80B0009A12D8 /* UserDefinedClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE0F492F26DE80B0009A12D8 /* UserDefinedClasses.swift */; };
+		FE2C231826D9F1B8003CE8FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE2C231726D9F1B8003CE8FE /* MapKit.framework */; };
+		FE2C231A26D9FEAA003CE8FE /* HomeUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C231926D9FEAA003CE8FE /* HomeUIView.swift */; };
+		FE2C231C26D9FED4003CE8FE /* CheckInUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C231B26D9FED4003CE8FE /* CheckInUIView.swift */; };
+		FE2C231E26D9FEE4003CE8FE /* CheckOutUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C231D26D9FEE4003CE8FE /* CheckOutUIView.swift */; };
+		FE2C232026D9FEF2003CE8FE /* HistoryUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C231F26D9FEF2003CE8FE /* HistoryUIView.swift */; };
+		FE2C232326DA0026003CE8FE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C232226DA0026003CE8FE /* LoadingView.swift */; };
+		FE2C232526DA0040003CE8FE /* XCalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C232426DA0040003CE8FE /* XCalenderView.swift */; };
+		FE2C232B26DA012D003CE8FE /* Calendar+Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C232A26DA012D003CE8FE /* Calendar+Week.swift */; };
+		FE2C232D26DA0137003CE8FE /* CalendarColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C232C26DA0137003CE8FE /* CalendarColors.swift */; };
+		FE2C233326DA0144003CE8FE /* CalendarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C232E26DA0144003CE8FE /* CalendarButton.swift */; };
+		FE2C233426DA0144003CE8FE /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C232F26DA0144003CE8FE /* CalendarView.swift */; };
+		FE2C233526DA0144003CE8FE /* CalendarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C233026DA0144003CE8FE /* CalendarRow.swift */; };
+		FE2C233626DA0144003CE8FE /* CalendarTitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C233126DA0144003CE8FE /* CalendarTitleRow.swift */; };
+		FE2C233726DA0144003CE8FE /* CalendarWeekdaysRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C233226DA0144003CE8FE /* CalendarWeekdaysRow.swift */; };
 		FE7BA37D26D7A3F700E00E36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BA37C26D7A3F700E00E36 /* AppDelegate.swift */; };
 		FE7BA37F26D7A3F700E00E36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BA37E26D7A3F700E00E36 /* SceneDelegate.swift */; };
 		FE7BA38126D7A3F700E00E36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BA38026D7A3F700E00E36 /* ContentView.swift */; };
 		FE7BA38326D7A3FA00E00E36 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE7BA38226D7A3FA00E00E36 /* Assets.xcassets */; };
 		FE7BA38626D7A3FA00E00E36 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE7BA38526D7A3FA00E00E36 /* Preview Assets.xcassets */; };
 		FE7BA38926D7A3FA00E00E36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE7BA38726D7A3FA00E00E36 /* LaunchScreen.storyboard */; };
+		FE942AB426DD26F40061130D /* LoginUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE942AB326DD26F40061130D /* LoginUIView.swift */; };
+		FE942AB626DD29080061130D /* CheckAppUpdateClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE942AB526DD29080061130D /* CheckAppUpdateClass.swift */; };
+		FEB859AF26D91EB80068092F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB859AE26D91EB80068092F /* LocationManager.swift */; };
+		FEB859B126D928DD0068092F /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB859B026D928DD0068092F /* GoogleMapsView.swift */; };
+		FEDB154626E53CC000185FAA /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB154526E53CC000185FAA /* MultilineTextView.swift */; };
+		FEDB154C26E53D0900185FAA /* VisitPurposePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB154826E53D0800185FAA /* VisitPurposePopUp.swift */; };
+		FEDB154D26E53D0900185FAA /* CompanyTypePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB154926E53D0800185FAA /* CompanyTypePopUp.swift */; };
+		FEDB154E26E53D0900185FAA /* VisitOutcomesPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB154A26E53D0900185FAA /* VisitOutcomesPopUp.swift */; };
+		FEDB154F26E53D0900185FAA /* CompanyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB154B26E53D0900185FAA /* CompanyPopUp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13FDABA2C9E39ABE004B6291 /* Pods-EBApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EBApp.release.xcconfig"; path = "Target Support Files/Pods-EBApp/Pods-EBApp.release.xcconfig"; sourceTree = "<group>"; };
+		735831D3B8D62109037508A5 /* Pods_EBApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EBApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7476946B55C77DF07C7BC862 /* Pods-EBApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EBApp.debug.xcconfig"; path = "Target Support Files/Pods-EBApp/Pods-EBApp.debug.xcconfig"; sourceTree = "<group>"; };
+		FE0F492F26DE80B0009A12D8 /* UserDefinedClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefinedClasses.swift; sourceTree = "<group>"; };
+		FE2C231726D9F1B8003CE8FE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		FE2C231926D9FEAA003CE8FE /* HomeUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIView.swift; sourceTree = "<group>"; };
+		FE2C231B26D9FED4003CE8FE /* CheckInUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInUIView.swift; sourceTree = "<group>"; };
+		FE2C231D26D9FEE4003CE8FE /* CheckOutUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutUIView.swift; sourceTree = "<group>"; };
+		FE2C231F26D9FEF2003CE8FE /* HistoryUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryUIView.swift; sourceTree = "<group>"; };
+		FE2C232226DA0026003CE8FE /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		FE2C232426DA0040003CE8FE /* XCalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCalenderView.swift; sourceTree = "<group>"; };
+		FE2C232A26DA012D003CE8FE /* Calendar+Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Calendar+Week.swift"; sourceTree = "<group>"; };
+		FE2C232C26DA0137003CE8FE /* CalendarColors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarColors.swift; sourceTree = "<group>"; };
+		FE2C232E26DA0144003CE8FE /* CalendarButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarButton.swift; sourceTree = "<group>"; };
+		FE2C232F26DA0144003CE8FE /* CalendarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		FE2C233026DA0144003CE8FE /* CalendarRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarRow.swift; sourceTree = "<group>"; };
+		FE2C233126DA0144003CE8FE /* CalendarTitleRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTitleRow.swift; sourceTree = "<group>"; };
+		FE2C233226DA0144003CE8FE /* CalendarWeekdaysRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarWeekdaysRow.swift; sourceTree = "<group>"; };
 		FE7BA37926D7A3F700E00E36 /* EBApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EBApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7BA37C26D7A3F700E00E36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE7BA37E26D7A3F700E00E36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +67,15 @@
 		FE7BA38526D7A3FA00E00E36 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FE7BA38826D7A3FA00E00E36 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE7BA38A26D7A3FA00E00E36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE942AB326DD26F40061130D /* LoginUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIView.swift; sourceTree = "<group>"; };
+		FE942AB526DD29080061130D /* CheckAppUpdateClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAppUpdateClass.swift; sourceTree = "<group>"; };
+		FEB859AE26D91EB80068092F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		FEB859B026D928DD0068092F /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
+		FEDB154526E53CC000185FAA /* MultilineTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineTextView.swift; sourceTree = "<group>"; };
+		FEDB154826E53D0800185FAA /* VisitPurposePopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitPurposePopUp.swift; sourceTree = "<group>"; };
+		FEDB154926E53D0800185FAA /* CompanyTypePopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyTypePopUp.swift; sourceTree = "<group>"; };
+		FEDB154A26E53D0900185FAA /* VisitOutcomesPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitOutcomesPopUp.swift; sourceTree = "<group>"; };
+		FEDB154B26E53D0900185FAA /* CompanyPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyPopUp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +83,103 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE2C231826D9F1B8003CE8FE /* MapKit.framework in Frameworks */,
+				1C3D639ED55B1F573CB414C7 /* Pods_EBApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		05AB1800F43C00EB4E3B108B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C231726D9F1B8003CE8FE /* MapKit.framework */,
+				735831D3B8D62109037508A5 /* Pods_EBApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED0424701EC468AC2DD0CF52 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7476946B55C77DF07C7BC862 /* Pods-EBApp.debug.xcconfig */,
+				13FDABA2C9E39ABE004B6291 /* Pods-EBApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FE2C232126D9FFF7003CE8FE /* HelperUI */ = {
+			isa = PBXGroup;
+			children = (
+				FEDB154526E53CC000185FAA /* MultilineTextView.swift */,
+				FEB859B026D928DD0068092F /* GoogleMapsView.swift */,
+				FEB859AE26D91EB80068092F /* LocationManager.swift */,
+				FE2C232226DA0026003CE8FE /* LoadingView.swift */,
+				FE942AB526DD29080061130D /* CheckAppUpdateClass.swift */,
+				FE0F492F26DE80B0009A12D8 /* UserDefinedClasses.swift */,
+			);
+			path = HelperUI;
+			sourceTree = "<group>";
+		};
+		FE2C232626DA008F003CE8FE /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C232926DA00C0003CE8FE /* Extension */,
+				FE2C232826DA00B9003CE8FE /* Model */,
+				FE2C232726DA009D003CE8FE /* View */,
+				FE2C232426DA0040003CE8FE /* XCalenderView.swift */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
+		FE2C232726DA009D003CE8FE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C232E26DA0144003CE8FE /* CalendarButton.swift */,
+				FE2C233026DA0144003CE8FE /* CalendarRow.swift */,
+				FE2C233126DA0144003CE8FE /* CalendarTitleRow.swift */,
+				FE2C232F26DA0144003CE8FE /* CalendarView.swift */,
+				FE2C233226DA0144003CE8FE /* CalendarWeekdaysRow.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE2C232826DA00B9003CE8FE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C232C26DA0137003CE8FE /* CalendarColors.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE2C232926DA00C0003CE8FE /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C232A26DA012D003CE8FE /* Calendar+Week.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FE2C233826DA02F6003CE8FE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FE2C231926D9FEAA003CE8FE /* HomeUIView.swift */,
+				FE2C231B26D9FED4003CE8FE /* CheckInUIView.swift */,
+				FE2C231D26D9FEE4003CE8FE /* CheckOutUIView.swift */,
+				FE2C231F26D9FEF2003CE8FE /* HistoryUIView.swift */,
+				FE942AB326DD26F40061130D /* LoginUIView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		FE7BA37026D7A3F700E00E36 = {
 			isa = PBXGroup;
 			children = (
 				FE7BA37B26D7A3F700E00E36 /* EBApp */,
 				FE7BA37A26D7A3F700E00E36 /* Products */,
+				ED0424701EC468AC2DD0CF52 /* Pods */,
+				05AB1800F43C00EB4E3B108B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +194,10 @@
 		FE7BA37B26D7A3F700E00E36 /* EBApp */ = {
 			isa = PBXGroup;
 			children = (
+				FEDB154726E53CEF00185FAA /* PopupUI */,
+				FE2C233826DA02F6003CE8FE /* Views */,
+				FE2C232626DA008F003CE8FE /* CalendarView */,
+				FE2C232126D9FFF7003CE8FE /* HelperUI */,
 				FE7BA37C26D7A3F700E00E36 /* AppDelegate.swift */,
 				FE7BA37E26D7A3F700E00E36 /* SceneDelegate.swift */,
 				FE7BA38026D7A3F700E00E36 /* ContentView.swift */,
@@ -75,6 +217,17 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		FEDB154726E53CEF00185FAA /* PopupUI */ = {
+			isa = PBXGroup;
+			children = (
+				FEDB154B26E53D0900185FAA /* CompanyPopUp.swift */,
+				FEDB154926E53D0800185FAA /* CompanyTypePopUp.swift */,
+				FEDB154A26E53D0900185FAA /* VisitOutcomesPopUp.swift */,
+				FEDB154826E53D0800185FAA /* VisitPurposePopUp.swift */,
+			);
+			path = PopupUI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +235,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FE7BA38D26D7A3FA00E00E36 /* Build configuration list for PBXNativeTarget "EBApp" */;
 			buildPhases = (
+				60CD772908CBECD1FEC6168C /* [CP] Check Pods Manifest.lock */,
 				FE7BA37526D7A3F700E00E36 /* Sources */,
 				FE7BA37626D7A3F700E00E36 /* Frameworks */,
 				FE7BA37726D7A3F700E00E36 /* Resources */,
+				F7B2C1DF15566960A2806718 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -140,14 +295,79 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		60CD772908CBECD1FEC6168C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EBApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7B2C1DF15566960A2806718 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EBApp/Pods-EBApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EBApp/Pods-EBApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EBApp/Pods-EBApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		FE7BA37526D7A3F700E00E36 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE2C231C26D9FED4003CE8FE /* CheckInUIView.swift in Sources */,
+				FEDB154E26E53D0900185FAA /* VisitOutcomesPopUp.swift in Sources */,
+				FEB859AF26D91EB80068092F /* LocationManager.swift in Sources */,
+				FE0F493026DE80B0009A12D8 /* UserDefinedClasses.swift in Sources */,
+				FEDB154626E53CC000185FAA /* MultilineTextView.swift in Sources */,
+				FEB859B126D928DD0068092F /* GoogleMapsView.swift in Sources */,
+				FE2C233726DA0144003CE8FE /* CalendarWeekdaysRow.swift in Sources */,
+				FEDB154D26E53D0900185FAA /* CompanyTypePopUp.swift in Sources */,
+				FEDB154F26E53D0900185FAA /* CompanyPopUp.swift in Sources */,
+				FE2C233326DA0144003CE8FE /* CalendarButton.swift in Sources */,
+				FE2C232B26DA012D003CE8FE /* Calendar+Week.swift in Sources */,
+				FE2C233426DA0144003CE8FE /* CalendarView.swift in Sources */,
+				FE2C232326DA0026003CE8FE /* LoadingView.swift in Sources */,
 				FE7BA37D26D7A3F700E00E36 /* AppDelegate.swift in Sources */,
 				FE7BA37F26D7A3F700E00E36 /* SceneDelegate.swift in Sources */,
 				FE7BA38126D7A3F700E00E36 /* ContentView.swift in Sources */,
+				FE2C232D26DA0137003CE8FE /* CalendarColors.swift in Sources */,
+				FE942AB626DD29080061130D /* CheckAppUpdateClass.swift in Sources */,
+				FE2C231E26D9FEE4003CE8FE /* CheckOutUIView.swift in Sources */,
+				FE2C233626DA0144003CE8FE /* CalendarTitleRow.swift in Sources */,
+				FE2C232026D9FEF2003CE8FE /* HistoryUIView.swift in Sources */,
+				FE2C231A26D9FEAA003CE8FE /* HomeUIView.swift in Sources */,
+				FE942AB426DD26F40061130D /* LoginUIView.swift in Sources */,
+				FEDB154C26E53D0900185FAA /* VisitPurposePopUp.swift in Sources */,
+				FE2C233526DA0144003CE8FE /* CalendarRow.swift in Sources */,
+				FE2C232526DA0040003CE8FE /* XCalenderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +503,7 @@
 		};
 		FE7BA38E26D7A3FA00E00E36 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7476946B55C77DF07C7BC862 /* Pods-EBApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -291,6 +512,7 @@
 				DEVELOPMENT_TEAM = FPSLD433CM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = EBApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,12 +520,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.banglalinkGSM.EBApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		FE7BA38F26D7A3FA00E00E36 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13FDABA2C9E39ABE004B6291 /* Pods-EBApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -312,6 +535,7 @@
 				DEVELOPMENT_TEAM = FPSLD433CM;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = EBApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,7 +543,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.banglalinkGSM.EBApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

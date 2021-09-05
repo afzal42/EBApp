@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import GoogleMaps
+
+let googleApiKey="AIzaSyD6R68IylSixf_h5XT1maMGj-SYxlnsfvs"
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,6 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        GMSServices.provideAPIKey(googleApiKey)
         return true
     }
 
@@ -34,3 +39,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+
+
+//class AnyGestureRecognizer: UIGestureRecognizer {
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+//        if let touchedView = touches.first?.view, touchedView is UIControl {
+//            state = .cancelled
+//
+//        } else if let touchedView = touches.first?.view as? UITextView, touchedView.isEditable {
+//            state = .cancelled
+//
+//        } else {
+//            state = .began
+//        }
+//    }
+//
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//       state = .ended
+//    }
+//
+//    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
+//        state = .cancelled
+//    }
+//}
