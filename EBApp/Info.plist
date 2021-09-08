@@ -22,14 +22,6 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>Collect API Data</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Find Current Location wise Customer List</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Get User Location</string>
-	<key>NSLocationDefaultAccuracyReduced</key>
-	<string>Get User Current Location GEO Values</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -66,5 +58,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Find Map Current Location wise Customer List</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Find Map Current Location wise Customer List</string>
 </dict>
 </plist>

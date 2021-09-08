@@ -13,7 +13,7 @@
 		FE2C231A26D9FEAA003CE8FE /* HomeUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C231926D9FEAA003CE8FE /* HomeUIView.swift */; };
 		FE2C231C26D9FED4003CE8FE /* CheckInUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C231B26D9FED4003CE8FE /* CheckInUIView.swift */; };
 		FE2C231E26D9FEE4003CE8FE /* CheckOutUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C231D26D9FEE4003CE8FE /* CheckOutUIView.swift */; };
-		FE2C232026D9FEF2003CE8FE /* HistoryUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C231F26D9FEF2003CE8FE /* HistoryUIView.swift */; };
+		FE2C232026D9FEF2003CE8FE /* GiftInventoryStockUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C231F26D9FEF2003CE8FE /* GiftInventoryStockUIView.swift */; };
 		FE2C232326DA0026003CE8FE /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C232226DA0026003CE8FE /* LoadingView.swift */; };
 		FE2C232526DA0040003CE8FE /* XCalenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C232426DA0040003CE8FE /* XCalenderView.swift */; };
 		FE2C232B26DA012D003CE8FE /* Calendar+Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C232A26DA012D003CE8FE /* Calendar+Week.swift */; };
@@ -23,6 +23,8 @@
 		FE2C233526DA0144003CE8FE /* CalendarRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C233026DA0144003CE8FE /* CalendarRow.swift */; };
 		FE2C233626DA0144003CE8FE /* CalendarTitleRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C233126DA0144003CE8FE /* CalendarTitleRow.swift */; };
 		FE2C233726DA0144003CE8FE /* CalendarWeekdaysRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE2C233226DA0144003CE8FE /* CalendarWeekdaysRow.swift */; };
+		FE46AC8626E7AD1000E78889 /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE46AC8526E7AD1000E78889 /* BarChart.swift */; };
+		FE46AC8A26E7BE2F00E78889 /* NotificationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE46AC8926E7BE2F00E78889 /* NotificationPopUp.swift */; };
 		FE7BA37D26D7A3F700E00E36 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BA37C26D7A3F700E00E36 /* AppDelegate.swift */; };
 		FE7BA37F26D7A3F700E00E36 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BA37E26D7A3F700E00E36 /* SceneDelegate.swift */; };
 		FE7BA38126D7A3F700E00E36 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7BA38026D7A3F700E00E36 /* ContentView.swift */; };
@@ -31,6 +33,8 @@
 		FE7BA38926D7A3FA00E00E36 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE7BA38726D7A3FA00E00E36 /* LaunchScreen.storyboard */; };
 		FE942AB426DD26F40061130D /* LoginUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE942AB326DD26F40061130D /* LoginUIView.swift */; };
 		FE942AB626DD29080061130D /* CheckAppUpdateClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE942AB526DD29080061130D /* CheckAppUpdateClass.swift */; };
+		FE9B130A26E67DE500EADD49 /* VisitReportUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9B130926E67DE500EADD49 /* VisitReportUIView.swift */; };
+		FE9B130E26E6883700EADD49 /* SalesUpdateUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE9B130D26E6883700EADD49 /* SalesUpdateUIView.swift */; };
 		FEB859AF26D91EB80068092F /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB859AE26D91EB80068092F /* LocationManager.swift */; };
 		FEB859B126D928DD0068092F /* GoogleMapsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEB859B026D928DD0068092F /* GoogleMapsView.swift */; };
 		FEDB154626E53CC000185FAA /* MultilineTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB154526E53CC000185FAA /* MultilineTextView.swift */; };
@@ -38,7 +42,30 @@
 		FEDB154D26E53D0900185FAA /* CompanyTypePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB154926E53D0800185FAA /* CompanyTypePopUp.swift */; };
 		FEDB154E26E53D0900185FAA /* VisitOutcomesPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB154A26E53D0900185FAA /* VisitOutcomesPopUp.swift */; };
 		FEDB154F26E53D0900185FAA /* CompanyPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB154B26E53D0900185FAA /* CompanyPopUp.swift */; };
+		FEDB155226E5471600185FAA /* KPIDashboardUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB155126E5471600185FAA /* KPIDashboardUIView.swift */; };
+		FEDB155726E547A300185FAA /* WineTransaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB155626E547A300185FAA /* WineTransaction.swift */; };
+		FEDB156526E5496400185FAA /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB156426E5496400185FAA /* LineChart.swift */; };
+		FEDB156726E549E900185FAA /* HelperFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB156626E549E900185FAA /* HelperFile.swift */; };
+		FEDB156926E54BB600185FAA /* BalloonMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB156826E54BB600185FAA /* BalloonMarker.swift */; };
+		FEDB156B26E54CB200185FAA /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB156A26E54CB200185FAA /* Transaction.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FEDB155D26E5484800185FAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEDB155826E5484800185FAA /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
+			remoteInfo = Charts;
+		};
+		FEDB155F26E5484800185FAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FEDB155826E5484800185FAA /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
+			remoteInfo = ChartsTests;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		13FDABA2C9E39ABE004B6291 /* Pods-EBApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EBApp.release.xcconfig"; path = "Target Support Files/Pods-EBApp/Pods-EBApp.release.xcconfig"; sourceTree = "<group>"; };
@@ -49,7 +76,7 @@
 		FE2C231926D9FEAA003CE8FE /* HomeUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUIView.swift; sourceTree = "<group>"; };
 		FE2C231B26D9FED4003CE8FE /* CheckInUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInUIView.swift; sourceTree = "<group>"; };
 		FE2C231D26D9FEE4003CE8FE /* CheckOutUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckOutUIView.swift; sourceTree = "<group>"; };
-		FE2C231F26D9FEF2003CE8FE /* HistoryUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryUIView.swift; sourceTree = "<group>"; };
+		FE2C231F26D9FEF2003CE8FE /* GiftInventoryStockUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftInventoryStockUIView.swift; sourceTree = "<group>"; };
 		FE2C232226DA0026003CE8FE /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		FE2C232426DA0040003CE8FE /* XCalenderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCalenderView.swift; sourceTree = "<group>"; };
 		FE2C232A26DA012D003CE8FE /* Calendar+Week.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Calendar+Week.swift"; sourceTree = "<group>"; };
@@ -59,6 +86,8 @@
 		FE2C233026DA0144003CE8FE /* CalendarRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarRow.swift; sourceTree = "<group>"; };
 		FE2C233126DA0144003CE8FE /* CalendarTitleRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarTitleRow.swift; sourceTree = "<group>"; };
 		FE2C233226DA0144003CE8FE /* CalendarWeekdaysRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarWeekdaysRow.swift; sourceTree = "<group>"; };
+		FE46AC8526E7AD1000E78889 /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
+		FE46AC8926E7BE2F00E78889 /* NotificationPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPopUp.swift; sourceTree = "<group>"; };
 		FE7BA37926D7A3F700E00E36 /* EBApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EBApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE7BA37C26D7A3F700E00E36 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE7BA37E26D7A3F700E00E36 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +98,8 @@
 		FE7BA38A26D7A3FA00E00E36 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE942AB326DD26F40061130D /* LoginUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIView.swift; sourceTree = "<group>"; };
 		FE942AB526DD29080061130D /* CheckAppUpdateClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAppUpdateClass.swift; sourceTree = "<group>"; };
+		FE9B130926E67DE500EADD49 /* VisitReportUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitReportUIView.swift; sourceTree = "<group>"; };
+		FE9B130D26E6883700EADD49 /* SalesUpdateUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SalesUpdateUIView.swift; sourceTree = "<group>"; };
 		FEB859AE26D91EB80068092F /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		FEB859B026D928DD0068092F /* GoogleMapsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleMapsView.swift; sourceTree = "<group>"; };
 		FEDB154526E53CC000185FAA /* MultilineTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultilineTextView.swift; sourceTree = "<group>"; };
@@ -76,6 +107,13 @@
 		FEDB154926E53D0800185FAA /* CompanyTypePopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyTypePopUp.swift; sourceTree = "<group>"; };
 		FEDB154A26E53D0900185FAA /* VisitOutcomesPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitOutcomesPopUp.swift; sourceTree = "<group>"; };
 		FEDB154B26E53D0900185FAA /* CompanyPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyPopUp.swift; sourceTree = "<group>"; };
+		FEDB155126E5471600185FAA /* KPIDashboardUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIDashboardUIView.swift; sourceTree = "<group>"; };
+		FEDB155626E547A300185FAA /* WineTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineTransaction.swift; sourceTree = "<group>"; };
+		FEDB155826E5484800185FAA /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		FEDB156426E5496400185FAA /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		FEDB156626E549E900185FAA /* HelperFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFile.swift; sourceTree = "<group>"; };
+		FEDB156826E54BB600185FAA /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
+		FEDB156A26E54CB200185FAA /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +156,7 @@
 				FE2C232226DA0026003CE8FE /* LoadingView.swift */,
 				FE942AB526DD29080061130D /* CheckAppUpdateClass.swift */,
 				FE0F492F26DE80B0009A12D8 /* UserDefinedClasses.swift */,
+				FEDB155626E547A300185FAA /* WineTransaction.swift */,
 			);
 			path = HelperUI;
 			sourceTree = "<group>";
@@ -167,8 +206,11 @@
 				FE2C231926D9FEAA003CE8FE /* HomeUIView.swift */,
 				FE2C231B26D9FED4003CE8FE /* CheckInUIView.swift */,
 				FE2C231D26D9FEE4003CE8FE /* CheckOutUIView.swift */,
-				FE2C231F26D9FEF2003CE8FE /* HistoryUIView.swift */,
+				FE2C231F26D9FEF2003CE8FE /* GiftInventoryStockUIView.swift */,
 				FE942AB326DD26F40061130D /* LoginUIView.swift */,
+				FEDB155126E5471600185FAA /* KPIDashboardUIView.swift */,
+				FE9B130926E67DE500EADD49 /* VisitReportUIView.swift */,
+				FE9B130D26E6883700EADD49 /* SalesUpdateUIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -194,6 +236,7 @@
 		FE7BA37B26D7A3F700E00E36 /* EBApp */ = {
 			isa = PBXGroup;
 			children = (
+				FEDB155326E5474800185FAA /* ChartsUI */,
 				FEDB154726E53CEF00185FAA /* PopupUI */,
 				FE2C233826DA02F6003CE8FE /* Views */,
 				FE2C232626DA008F003CE8FE /* CalendarView */,
@@ -204,6 +247,7 @@
 				FE7BA38226D7A3FA00E00E36 /* Assets.xcassets */,
 				FE7BA38726D7A3FA00E00E36 /* LaunchScreen.storyboard */,
 				FE7BA38A26D7A3FA00E00E36 /* Info.plist */,
+				FEDB155826E5484800185FAA /* Charts.xcodeproj */,
 				FE7BA38426D7A3FA00E00E36 /* Preview Content */,
 			);
 			path = EBApp;
@@ -224,8 +268,30 @@
 				FEDB154926E53D0800185FAA /* CompanyTypePopUp.swift */,
 				FEDB154A26E53D0900185FAA /* VisitOutcomesPopUp.swift */,
 				FEDB154826E53D0800185FAA /* VisitPurposePopUp.swift */,
+				FE46AC8926E7BE2F00E78889 /* NotificationPopUp.swift */,
 			);
 			path = PopupUI;
+			sourceTree = "<group>";
+		};
+		FEDB155326E5474800185FAA /* ChartsUI */ = {
+			isa = PBXGroup;
+			children = (
+				FEDB156426E5496400185FAA /* LineChart.swift */,
+				FEDB156626E549E900185FAA /* HelperFile.swift */,
+				FEDB156826E54BB600185FAA /* BalloonMarker.swift */,
+				FEDB156A26E54CB200185FAA /* Transaction.swift */,
+				FE46AC8526E7AD1000E78889 /* BarChart.swift */,
+			);
+			path = ChartsUI;
+			sourceTree = "<group>";
+		};
+		FEDB155926E5484800185FAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FEDB155E26E5484800185FAA /* Charts.framework */,
+				FEDB156026E5484800185FAA /* ChartsTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +306,7 @@
 				FE7BA37626D7A3F700E00E36 /* Frameworks */,
 				FE7BA37726D7A3F700E00E36 /* Resources */,
 				F7B2C1DF15566960A2806718 /* [CP] Copy Pods Resources */,
+				D48E9D9BF58ED24824B930E3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -275,12 +342,35 @@
 			mainGroup = FE7BA37026D7A3F700E00E36;
 			productRefGroup = FE7BA37A26D7A3F700E00E36 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FEDB155926E5484800185FAA /* Products */;
+					ProjectRef = FEDB155826E5484800185FAA /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				FE7BA37826D7A3F700E00E36 /* EBApp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FEDB155E26E5484800185FAA /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = FEDB155D26E5484800185FAA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FEDB156026E5484800185FAA /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = FEDB155F26E5484800185FAA /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FE7BA37726D7A3F700E00E36 /* Resources */ = {
@@ -318,6 +408,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D48E9D9BF58ED24824B930E3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EBApp/Pods-EBApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-EBApp/Pods-EBApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-EBApp/Pods-EBApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F7B2C1DF15566960A2806718 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -342,18 +449,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE9B130E26E6883700EADD49 /* SalesUpdateUIView.swift in Sources */,
 				FE2C231C26D9FED4003CE8FE /* CheckInUIView.swift in Sources */,
 				FEDB154E26E53D0900185FAA /* VisitOutcomesPopUp.swift in Sources */,
 				FEB859AF26D91EB80068092F /* LocationManager.swift in Sources */,
 				FE0F493026DE80B0009A12D8 /* UserDefinedClasses.swift in Sources */,
 				FEDB154626E53CC000185FAA /* MultilineTextView.swift in Sources */,
 				FEB859B126D928DD0068092F /* GoogleMapsView.swift in Sources */,
+				FEDB155226E5471600185FAA /* KPIDashboardUIView.swift in Sources */,
 				FE2C233726DA0144003CE8FE /* CalendarWeekdaysRow.swift in Sources */,
 				FEDB154D26E53D0900185FAA /* CompanyTypePopUp.swift in Sources */,
 				FEDB154F26E53D0900185FAA /* CompanyPopUp.swift in Sources */,
+				FEDB156B26E54CB200185FAA /* Transaction.swift in Sources */,
 				FE2C233326DA0144003CE8FE /* CalendarButton.swift in Sources */,
 				FE2C232B26DA012D003CE8FE /* Calendar+Week.swift in Sources */,
 				FE2C233426DA0144003CE8FE /* CalendarView.swift in Sources */,
+				FEDB156526E5496400185FAA /* LineChart.swift in Sources */,
+				FE9B130A26E67DE500EADD49 /* VisitReportUIView.swift in Sources */,
 				FE2C232326DA0026003CE8FE /* LoadingView.swift in Sources */,
 				FE7BA37D26D7A3F700E00E36 /* AppDelegate.swift in Sources */,
 				FE7BA37F26D7A3F700E00E36 /* SceneDelegate.swift in Sources */,
@@ -362,12 +474,17 @@
 				FE942AB626DD29080061130D /* CheckAppUpdateClass.swift in Sources */,
 				FE2C231E26D9FEE4003CE8FE /* CheckOutUIView.swift in Sources */,
 				FE2C233626DA0144003CE8FE /* CalendarTitleRow.swift in Sources */,
-				FE2C232026D9FEF2003CE8FE /* HistoryUIView.swift in Sources */,
+				FEDB156926E54BB600185FAA /* BalloonMarker.swift in Sources */,
+				FE2C232026D9FEF2003CE8FE /* GiftInventoryStockUIView.swift in Sources */,
+				FE46AC8626E7AD1000E78889 /* BarChart.swift in Sources */,
 				FE2C231A26D9FEAA003CE8FE /* HomeUIView.swift in Sources */,
 				FE942AB426DD26F40061130D /* LoginUIView.swift in Sources */,
+				FEDB156726E549E900185FAA /* HelperFile.swift in Sources */,
+				FEDB155726E547A300185FAA /* WineTransaction.swift in Sources */,
 				FEDB154C26E53D0900185FAA /* VisitPurposePopUp.swift in Sources */,
 				FE2C233526DA0144003CE8FE /* CalendarRow.swift in Sources */,
 				FE2C232526DA0040003CE8FE /* XCalenderView.swift in Sources */,
+				FE46AC8A26E7BE2F00E78889 /* NotificationPopUp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

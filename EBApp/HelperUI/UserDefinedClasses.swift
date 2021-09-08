@@ -80,7 +80,8 @@ public struct VisitOutcome: Codable {
 
 public var CheckInList = [CheckinInfo]()
 public var LastCheckIn = [CheckinInfo]()
-public struct CheckinInfo: Codable {
+public struct CheckinInfo: Decodable {
+    let SL: Int
     let COMPANY_TYPE_ID: Int
     let COMPANY_TYPE: String
     let COMPANY_ID: Int
@@ -96,8 +97,33 @@ public struct CheckinInfo: Codable {
     let VISIT_PURPOSE: String
     let CHECK_OUT_STATUS: Int
     let CHECK_OUT_DATE: String?
-    let CHECK_OUT_LATITUDE: String?
-    let CHECK_OUT_LONGITUDE: String?
+    let CHECK_OUT_LATITUDE: Double?
+    let CHECK_OUT_LONGITUDE: Double?
+    let CHECK_OUT_ADDRESS: String?
+    let VISIT_OUTCOME_ID: Int
+    let VISIT_OUTCOME: String?
+    let CHECK_OUT_REMARKS: String?
+    let SUCCCESS: Bool
+}
+
+public struct CheckinInfoX: Codable {
+    let COMPANY_TYPE_ID: Int
+    let COMPANY_TYPE: String
+    let COMPANY_ID: Int
+    let COMPANY_NAME: String
+    let COMPANY_ADDRESS: String
+    let CHECK_IN_STATUS: Int
+    let CHECK_IN_DATE: String
+    
+    let CHECK_IN_LATITUDE: Double
+    let CHECK_IN_LONGITUDE: Double
+    let CHECK_IN_ADDRESS: String
+    let VISIT_PURPOSE_ID: Int
+    let VISIT_PURPOSE: String
+    let CHECK_OUT_STATUS: Int
+    let CHECK_OUT_DATE: String?
+    let CHECK_OUT_LATITUDE: Double?
+    let CHECK_OUT_LONGITUDE: Double?
     let CHECK_OUT_ADDRESS: String?
     let VISIT_OUTCOME_ID: Int
     let VISIT_OUTCOME: String?
@@ -106,6 +132,29 @@ public struct CheckinInfo: Codable {
 }
 
 
+public struct CheckInHistoryX: Codable {
+    let COMPANY_TYPE_ID: Int
+    let COMPANY_TYPE: String
+    let COMPANY_ID: Int
+    let COMPANY_NAME: String
+    let COMPANY_ADDRESS: String
+    let CHECK_IN_STATUS: Int
+    let CHECK_IN_DATE: String
+    
+    let CHECK_IN_LATITUDE: Double
+    let CHECK_IN_LONGITUDE: Double
+    let CHECK_IN_ADDRESS: String
+    let VISIT_PURPOSE_ID: Int
+    let VISIT_PURPOSE: String?
+    let CHECK_OUT_STATUS: Int
+    let CHECK_OUT_DATE: String?
+    let CHECK_OUT_LATITUDE: Double?
+    let CHECK_OUT_LONGITUDE: Double?
+    let CHECK_OUT_ADDRESS: String?
+    let VISIT_OUTCOME_ID: Int
+    let VISIT_OUTCOME: String?
+    let CHECK_OUT_REMARKS: String?
+}
 
 public struct SaveInfo: Codable{
     let success: Bool
@@ -113,7 +162,8 @@ public struct SaveInfo: Codable{
 }
 
 public var KpiInfoList = [KpiInfo]()
-public struct KpiInfo: Codable {
+public struct KpiInfo: Decodable {
+    var SL: Int
     let KPI_NAME: String
     let INDICATOR: Int
     let TARGET: Double
@@ -122,9 +172,18 @@ public struct KpiInfo: Codable {
     let GROWTH_PERCENTAGE: Double
 }
 
+public struct KpiInfoX: Codable {
+    let KPI_NAME: String
+    let INDICATOR: Int
+    let TARGET: Double
+    let ACHIEVEMENT: Double
+    let ACHIEVEMENT_PERCENTAGE: Double
+    let GROWTH_PERCENTAGE: Double
+}
 
 public var UserGiftList = [UserGiftInfo]()
-public struct UserGiftInfo: Codable {
+public struct UserGiftInfo: Decodable {
+    var SL: Int
     let DEPARTMENT_NAME: String
     let PRODUCT_CODE: String
     let PRODUCT_NAME: String
@@ -132,9 +191,27 @@ public struct UserGiftInfo: Codable {
     let PRODUCT_COUNT: Int
 }
 
+public struct UserGiftInfoX: Codable {
+    let DEPARTMENT_NAME: String
+    let PRODUCT_CODE: String
+    let PRODUCT_NAME: String
+    let PRODUCT_TYPE: String
+    let PRODUCT_COUNT: Int
+}
 
 public var SalsePipelineList = [SalsePipeline]()
-public struct SalsePipeline: Codable {
+public struct SalsePipeline: Decodable {
+    let SL: Int
+    let COMPANY_ID: Int
+    let COMPANY_NAME: String
+    let COMPANY_TYPE: String
+    let TOTAL_MSISDN_COUNT: Double
+    let EXPECTED_REVENUE: Double
+    let TEAM: String
+    let ACTIVATION_MATURE_MONTH: String
+}
+
+public struct SalsePipelineX: Codable {
     let COMPANY_ID: Int
     let COMPANY_NAME: String
     let COMPANY_TYPE: String
@@ -145,8 +222,17 @@ public struct SalsePipeline: Codable {
 }
 
 
-public var AggrementList = [AggrementInfo]()
-public struct AggrementInfo: Codable {
+public var AgreementList = [AgreementInfo]()
+public struct AgreementInfo: Decodable {
+    let SL: Int
+    let COMPANY_ID: Int
+    let COMPANY_NAME: String
+    let COMPANY_SEGMENT: String
+    let TOTAL_MSISDN_COUNT: Int
+    let BTRC_APPROVAL_STATUS: String
+}
+
+public struct AgreementInfoX: Codable {
     let COMPANY_ID: Int
     let COMPANY_NAME: String
     let COMPANY_SEGMENT: String
@@ -156,10 +242,114 @@ public struct AggrementInfo: Codable {
 
 
 public var CompanyVisitList = [CompanyVisit]()
-public struct CompanyVisit: Codable {
+public struct CompanyVisit: Decodable {
+    let SL: Int
+    let COMPANY_ID: Int
+    let COMPANY_NAME: String
+    let NO_OF_VISIT: Int
+}
+public struct CompanyVisitX: Codable {
     let COMPANY_ID: Int
     let COMPANY_NAME: String
     let NO_OF_VISIT: Int
 }
 
+public struct ZeroCompany: Decodable {
+    let SL: Int
+    let COMPANY_ID: Int
+    let COMPANY_NAME: String
+}
+
+public struct ZeroCompanyX: Codable {
+    let COMPANY_ID: Int
+    let COMPANY_NAME: String
+}
+
+
+public struct VisitTypeInfo: Decodable {
+    let VISIT_TYPE_ID: Int
+    let VISIT_TYPE_NAME: String
+}
+
+public struct NotificationInfo: Decodable {
+    let SL: Int
+    let COMPANY_NAME: String
+    let OCCASION_DETAIL: String
+    let OCCASION_DATE: String
+}
+
+public struct NotificationInfoX: Codable {
+    let COMPANY_NAME: String
+    let OCCASION_DETAIL: String
+    let OCCASION_DATE: String
+}
+
+
 //Afzal Hossain
+
+import SwiftUI
+
+struct PopUpButton : View {
+    
+    var title : String
+    
+    var body: some View{
+        
+        HStack(spacing: 15){
+            
+            Text(title).font(.system(size: 14))
+                .foregroundColor(Color("IconColor"))
+                .padding(.leading,10)
+            
+            Spacer(minLength: 0)
+        }
+        .padding(.vertical,12)
+    }
+}
+
+
+struct PopUpButtonImg : View {
+    
+    var title : String
+    
+    var body: some View{
+        
+        HStack(spacing: 15){
+            
+            Image(systemName: title)
+                .resizable()
+                .renderingMode(.template)
+                .frame(width: 24, height: 24)
+                .foregroundColor(Color("IconColor"))
+            
+            Text(title).font(.system(size: 14))
+                .foregroundColor(Color("IconColor"))
+            
+            Spacer(minLength: 0)
+        }
+        .padding(.vertical,12)
+    }
+}
+
+
+func formatPoints(from: Int) -> String {
+
+    let number = Double(from)
+    let thousand = number / 1000
+    let million = number / 1000000
+    //let billion = number / 1000000000
+
+//    if billion >= 1.0 {
+////        return "\(round(billion*10)/10)B"
+//        return String(format: "%.1f", ((billion*10)/10))+"B"
+//    } else
+    if million >= 1.0 {
+        return String(format: "%.1f", ((million*10)/10))+"M"
+//        return "\(round(million*10)/10)M"
+    } else if thousand >= 1.0 {
+        return String(format: "%.1f", ((thousand*10)/10))+"K"
+//        return ("\(round(thousand*10/10))K")
+    } else {
+        return "\(Int(number))"
+    }
+}

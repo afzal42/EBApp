@@ -43,124 +43,129 @@ struct LoginUIView: View {
 //        // [END log_iid_reg_token]
 //    }
     
+    @State var isToast: Bool = false
+    @State var toastMsg: String = ""
+    
     var body: some View {
         LoadingView(isShowing: $isLoad){
-            VStack(spacing: 10){
-                
-                VStack{
-                    ZStack{
-                        VStack{
+            ToastView(isShowing: $isToast, message:$toastMsg) {
+                VStack(spacing: 10){
+                    
+                    VStack{
+                        ZStack{
+                            VStack{
+                                HStack{
+                                    Text("Version Name:"+self.appName+" "+self.appVersion).foregroundColor(Color("IconColor")).font(.system(size: 10)).fontWeight(.thin)
+                                    Spacer()
+                                }
+                                .padding(.leading, 10)
+                                
+                                HStack{
+                                    Text("Release Date:"+self.ReleaseDate).foregroundColor(Color("IconColor")).font(.system(size: 10)).fontWeight(.thin)
+                                    Spacer()
+                                }
+                                .padding(.leading, 10)
+                                
+                                Text("Login").font(.title)
+                                HStack{
+                                    Image("logo").resizable() .padding(12)
+                                        .frame(width: 110, height: 135, alignment: .center)
+                                }
+                                .padding(1)
+                                .cornerRadius(5)
+                            }
+                        }
+                    }
+                    .onAppear(perform: {
+    //                    handleLogTokenTouch()
+    //                    let defaults = UserDefaults.standard
+                        
+                        let info = Bundle.main.infoDictionary
+                        print(info as Any)
+                        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                            self.appVersion = version
+                        }
+                        if let name = Bundle.main.infoDictionary?["CFBundleName"] as? String {
+                            self.appName = name
+                        }
+                     })
+                    .padding(.top, 30)
+                    
+                    VStack{
+                        
+                        HStack(spacing: 0){
+                            
+                            TextField("User Name", text: self.$txtMobile
+                            ).textFieldStyle(RoundedBorderTextFieldStyle())
+    //                        .keyboardType(.numberPad)
+                            .font(.system(size: 20))
+                            .onReceive(Just(self.txtMobile)) { inputValue in
+                                   
+                                if inputValue.count > 11 {
+                                    self.txtMobile.removeLast()
+                                }
+                            }
+                        }
+                        
+                    }
+                    .padding(.top, 10)
+                    .padding(.leading, 10)
+                    .padding(.trailing, 10)
+                    
+                    VStack{
+                        HStack(spacing: 0){
+                            
+                            TextField("Password", text: self.$txtCode
+                            ).textFieldStyle(RoundedBorderTextFieldStyle())
+    //                        .keyboardType(.numberPad)
+                            .font(.system(size: 20))
+                        }
+                        if showMsg {
                             HStack{
-                                Text("Version Name:"+self.appName+" "+self.appVersion).foregroundColor(Color("IconColor")).font(.system(size: 10)).fontWeight(.thin)
+                                Text(msg).foregroundColor(Color("btnColor"))
                                 Spacer()
                             }
-                            .padding(.leading, 10)
-                            
-                            HStack{
-                                Text("Release Date:"+self.ReleaseDate).foregroundColor(Color("IconColor")).font(.system(size: 10)).fontWeight(.thin)
-                                Spacer()
-                            }
-                            .padding(.leading, 10)
-                            
-                            Text("Login").font(.title)
-                            HStack{
-                                Image("logo").resizable() .padding(12)
-                                    .frame(width: 110, height: 135, alignment: .center)
-                            }
-                            .padding(1)
-                            .cornerRadius(5)
                         }
                     }
-                }
-                .onAppear(perform: {
-//                    handleLogTokenTouch()
-//                    let defaults = UserDefaults.standard
+                    .padding(.top, 0)
+                    .padding(.leading, 10)
+                    .padding(.trailing, 10)
                     
-                    let info = Bundle.main.infoDictionary
-                    print(info as Any)
-                    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-                        self.appVersion = version
-                    }
-                    if let name = Bundle.main.infoDictionary?["CFBundleName"] as? String {
-                        self.appName = name
-                    }
-                 })
-                .padding(.top, 30)
-                
-                VStack{
-                    
-                    HStack(spacing: 0){
+                    VStack{
                         
-                        TextField("User Name", text: self.$txtMobile
-                        ).textFieldStyle(RoundedBorderTextFieldStyle())
-//                        .keyboardType(.numberPad)
-                        .font(.system(size: 20))
-                        .onReceive(Just(self.txtMobile)) { inputValue in
-                               
-                            if inputValue.count > 11 {
-                                self.txtMobile.removeLast()
+                        HStack(spacing: 0){
+
+                            Button(action: {
+                                if (self.txtMobile == "" || self.txtCode == ""){
+                                    showMsg = true
+                                    msg  = "Invalid Mobile/Password"
+                                }
+                                else{
+                                    self.isLoad.toggle()
+                                    checkUserAuth(User_Id: self.txtMobile, Password: self.txtCode)
+                                }
+
+                            }) {
+                                Text("LOGIN")
+                                    .foregroundColor(Color.white)
+                                    .fontWeight(.bold)
+                                    .frame(width: (UIScreen.main.bounds.width - 20), height: 40)
+                                    .background(Color("btnColor"))
+                                    .cornerRadius(6)
                             }
                         }
-                    }
-                    
-                }
-                .padding(.top, 10)
-                .padding(.leading, 10)
-                .padding(.trailing, 10)
-                
-                VStack{
-                    HStack(spacing: 0){
                         
-                        TextField("Password", text: self.$txtCode
-                        ).textFieldStyle(RoundedBorderTextFieldStyle())
-//                        .keyboardType(.numberPad)
-                        .font(.system(size: 20))
                     }
-                    if showMsg {
-                        HStack{
-                            Text(msg).foregroundColor(Color("btnColor"))
-                            Spacer()
-                        }
-                    }
+                    .padding(0)
+                    Spacer()
                 }
-                .padding(.top, 0)
-                .padding(.leading, 10)
-                .padding(.trailing, 10)
-                
-                VStack{
-                    
-                    HStack(spacing: 0){
-
-                        Button(action: {
-                            if (self.txtMobile == "" || self.txtCode == ""){
-                                showMsg = true
-                                msg  = "Invalid Mobile/Password"
-                            }
-                            else{
-                                self.isLoad.toggle()
-                                checkUserAuth(User_Id: self.txtMobile, Password: self.txtCode)
-                            }
-
-                        }) {
-                            Text("LOGIN")
-                                .foregroundColor(Color.white)
-                                .fontWeight(.bold)
-                                .frame(width: (UIScreen.main.bounds.width - 20), height: 40)
-                                .background(Color("btnColor"))
-                                .cornerRadius(6)
-                        }
-                    }
-                    
-                }
-                .padding(0)
-                Spacer()
+                .edgesIgnoringSafeArea(.all)
             }
-            .edgesIgnoringSafeArea(.all)
         }
     }
 
     func checkUserAuth(User_Id: String, Password: String) {
-        guard let url = URL(string: baseUrl+"/api/EB_AMS_User/Login/") else { return }
+        guard let url = URL(string: baseUrl+"/api/EB_AMS_User/Login") else { return }
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -220,6 +225,18 @@ struct LoginUIView: View {
                 } catch {
                     print(error.localizedDescription)
                     msg = "Invalid mobile no.!"
+                    
+                    do {
+                    let errorData = try decoder.decode(SaveInfo.self, from: data)
+                    if errorData.success == false {
+                        toastMsg = errorData.message
+                        self.isToast.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                            self.isToast.toggle()
+                        })
+                    }
+                    } catch {
+                    }
                     self.isLoad.toggle()
                 }
                 

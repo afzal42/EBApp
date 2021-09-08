@@ -366,8 +366,17 @@ struct CheckInUIView: View {
                                 HStack{
                                     Spacer(minLength: 0)
                                     Button(action: {
-                                        self.funSaveCheckIn()
-                                        self.funLastCheckIn()
+                                        if self.CompanyTypeName.count>1 && self.CompanyName.count>1 && self.CompanyAddress.count>1 && self.lastLatitude>1 && self.lastLongitude>1 && self.UserAddress.count>1 && self.VisitPurposeName.count>1{
+                                            self.funSaveCheckIn()
+                                            self.funLastCheckIn()
+                                        }
+                                        else{
+                                            self.msg="You Select All Value Properly!!"
+                                            self.isToast.toggle()
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                                                self.isToast.toggle()
+                                            })
+                                        }
                                     }, label: {
                                         Text("Check-In")
                                         .fontWeight(.bold)

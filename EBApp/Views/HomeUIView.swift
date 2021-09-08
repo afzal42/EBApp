@@ -39,18 +39,11 @@ struct HomeUIView: View {
     @State var role: String = ""
     @State var fullRole: String = ""
 
-//    @ObservedObject var locationManager = LocationManager()
-
-//    public var lastLatitude : Double {
-//        (locationManager.lastLocation?.coordinate.latitude) ?? 0
-//    }
-//
-//    public var lastLongitude : Double {
-//        (locationManager.lastLocation?.coordinate.longitude) ?? 0
-//    }
-    
     @State var isToast: Bool = false
     @State var ToastMsg: String = ""
+    @State var notifyX: CGFloat = -1000
+    
+    @State var NotificatioList = [NotificationInfo]()
     
     var body: some View {
         ZStack{
@@ -76,6 +69,25 @@ struct HomeUIView: View {
                                 HStack{
                                     Text(self.business).foregroundColor(Color("IconColor")).font(.system(size: 12)).fontWeight(.semibold)
                                     Spacer()
+                                    HStack{
+                                        Button(action: {
+                                            funNotificationList()
+                                            withAnimation {
+                                                self.notifyX = 0
+                                            }
+                                        }) {
+                                            ZStack{
+                                                Image(systemName: "bell").foregroundColor(Color("btnColor"))
+                                                if(NotificationCount>0){
+                                                Image(systemName: "\(NotificationCount).circle.fill")
+                                                    .resizable()
+                                                    .foregroundColor(Color("btnColor"))
+                                                    .frame(width: 8, height: 8)
+                                                    .offset(x: -5, y: 5)
+                                                }
+                                            }
+                                        }
+                                    }.padding(.trailing, 15)
                                 }
                                 HStack{
                                     Text(self.fullRole).foregroundColor(Color("IconColor")).font(.system(size: 12)).fontWeight(.semibold)
@@ -86,7 +98,6 @@ struct HomeUIView: View {
                             .onAppear(perform: {
                                 
                                 let defaults = UserDefaults.standard
-                //                if let check: String = defaults.string(forKey: defaultsKeys.isDark){
                                 if let name: String = defaults.string(forKey: defaultsKeys.User_Name){
                                     self.userName = name
                                     self.business = defaults.string(forKey: defaultsKeys.Business_Name)!
@@ -106,6 +117,8 @@ struct HomeUIView: View {
                             .padding(.top,10)
                             .padding(.leading, 10)
                             .padding(.trailing, 10)
+                            
+                            Divider()
                             
                             ZStack{
                             VStack(spacing: 10){
@@ -145,15 +158,15 @@ struct HomeUIView: View {
                                         
                                         if self.myMenu.contains("500002") {
                                             self.index = 3
-                                            self.title = "KIP Details"
+                                            self.title = "Visit Report"
                                             self.lastPageArray.append(0)
                                         }
                                     }, label: {
                                         VStack(spacing: 5){
-                                            Image("Q1")
+                                            Image("history")
                                                 .resizable()
                                                 .frame(width: qaValue, height: qaValue)
-                                            Text("KIP Details").foregroundColor(Color("IconColor")).font(.system(size: 12))
+                                            Text("Visit Report").foregroundColor(Color("IconColor")).font(.system(size: 12))
                                         }
                                     })
                                     Spacer(minLength: 0)
@@ -190,16 +203,16 @@ struct HomeUIView: View {
                                         
                                         if self.myMenu.contains("500002") {
                                             self.index = 4
-                                            self.title = "Visit Report"
+                                            self.title = "Sales Update"
                                             self.lastPageArray.append(4)
                                         }
                                     }, label: {
                                         
                                         VStack(spacing: 5){
-                                            Image("history")
+                                            Image("Q4")
                                                 .resizable()
                                                 .frame(width: qaValue, height: qaValue)
-                                            Text("Visit Report").foregroundColor(Color("IconColor")).font(.system(size: 12))
+                                            Text("Sales Update").foregroundColor(Color("IconColor")).font(.system(size: 12))
                                         }
                                     })
                                     Spacer(minLength: 0)
@@ -207,30 +220,30 @@ struct HomeUIView: View {
                                         
                                         if self.myMenu.contains("500002") {
                                             self.index = 5
-                                            self.title = "Inventory Stock"
+                                            self.title = "KIP Dashboard"
                                             self.lastPageArray.append(5)
+                                        }
+                                    }, label: {
+                                        VStack(spacing: 5){
+                                            Image("Q1")
+                                                .resizable()
+                                                .frame(width: qaValue, height: qaValue)
+                                            Text("KIP Dashboard").foregroundColor(Color("IconColor")).font(.system(size: 12))
+                                        }
+                                    })
+                                    Spacer(minLength: 0)
+                                    Button(action: {
+                                        if self.myMenu.contains("500002") {
+                                            self.title = "Gift Inventory Stock"
+                                            self.index = 6
+                                            self.lastPageArray.append(6)
                                         }
                                     }, label: {
                                         VStack(spacing: 5){
                                             Image("Q6")
                                                 .resizable()
                                                 .frame(width: qaValue, height: qaValue)
-                                            Text("Inventory Stock").foregroundColor(Color("IconColor")).font(.system(size: 12))
-                                        }
-                                    })
-                                    Spacer(minLength: 0)
-                                    Button(action: {
-                                        if self.myMenu.contains("500002") {
-                                            self.title = "Sales Update"
-                                            self.index = 6
-                                            self.lastPageArray.append(6)
-                                        }
-                                    }, label: {
-                                        VStack(spacing: 5){
-                                            Image("Q4")
-                                                .resizable()
-                                                .frame(width: qaValue, height: qaValue)
-                                            Text("Sales Update").foregroundColor(Color("IconColor")).font(.system(size: 12))
+                                            Text("Gift Inv. Stock").foregroundColor(Color("IconColor")).font(.system(size: 12))
                                         }
                                     })
                                 }
@@ -243,19 +256,75 @@ struct HomeUIView: View {
                         .padding(.top, 0).cornerRadius(3.0)
                         .offset(y:10)
                         }
-                        ZStack{
-                            GoogleMapsView(isFocused: $isFocused, lastLatitude: self.lastLatitude, lastLongitude: self.lastLongitude)
-                            .onAppear(perform: {
-                                print(lastLatitude)
-                                print(lastLongitude)
-                            })
+                        Divider()
+                        VStack{
+//                            ZStack{
+                                GoogleMapsView(isFocused: $isFocused, lastLatitude: self.lastLatitude, lastLongitude: self.lastLongitude)
+                                .onAppear(perform: {
+                                    print(lastLatitude)
+                                    print(lastLongitude)
+                                })
+//                            }
                         }
                     }
                 }
             }
+            
+            if notifyX >= 0 {
+                NotificationPopUp(x: $notifyX, NotificatioList: $NotificatioList)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-50, alignment: .center)
+                .shadow(color: Color.black.opacity(notifyX != 0 ? 0.1 : 0), radius: 5, x: 5, y: 0)
+                .offset(x: notifyX, y: 0)
+                .background(Color.black.opacity(notifyX == 0 ? 0.5 : 0)
+                .onTapGesture {
+                    self.notifyX = -800
+                })
+            }
+            
+            
         }
     }
     
+    func funNotificationList() {
+        guard let url = URL(string: baseUrl+"/api/EB_AMS_User/Get_Notification") else { return }
+        
+        let defaults = UserDefaults.standard
+        
+        let Login_Name = defaults.string(forKey: defaultsKeys.Login_Name)!
+        let Access_Key = defaults.string(forKey: defaultsKeys.Access_Key)!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let postString = "{'USER_NAME':'\(Login_Name)','ACCESS_KEY':'\(Access_Key)'}";
+        // Set HTTP Request Body
+        request.httpBody = postString.data(using: String.Encoding.utf8);
+        
+        self.NotificatioList.removeAll()
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                return
+            }
+            if let dataString = String(data: data, encoding: .utf8) {
+                print("Response data string:\n \(dataString)")
+                let decoder = JSONDecoder()
+
+                do {
+                    let resData = try decoder.decode([NotificationInfoX].self, from: data)
+                    print(resData)
+                    for i in 0...resData.count-1 {
+                        let obj=resData[i]
+                        self.NotificatioList.append(NotificationInfo.init(SL: i, COMPANY_NAME: obj.COMPANY_NAME, OCCASION_DETAIL: obj.OCCASION_DETAIL, OCCASION_DATE: obj.OCCASION_DATE))
+                    }
+                    
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        .resume()
+    }
     
     func funLastCheckIn() {
         guard let url = URL(string: baseUrl+"/api/EB_AMS_User/Get_Last_Check_In_Info") else { return }

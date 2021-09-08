@@ -7,5 +7,6 @@ target 'EBApp' do
 
   # Pods for EBApp
   pod 'GoogleMaps', '4.1.0'
+  pod 'Charts'
 
 end

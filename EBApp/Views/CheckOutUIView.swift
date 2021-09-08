@@ -402,7 +402,16 @@ struct CheckOutUIView: View {
                                     HStack{
                                         Spacer(minLength: 0)
                                         Button(action: {
-                                            self.funSaveCheckOut()
+                                            if self.VisitOutcomeName.count>1 && self.lastLatitude>1 && self.lastLongitude>1 && self.UserAddress.count>1 && self.UserRemarks.count>1{
+                                                self.funSaveCheckOut()
+                                            }
+                                            else{
+                                                self.msg="You Select All Value Properly!!"
+                                                self.isToast.toggle()
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
+                                                    self.isToast.toggle()
+                                                })
+                                            }
                                         }, label: {
                                             Text("Check-Out")
                                             .fontWeight(.bold)

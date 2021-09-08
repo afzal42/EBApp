@@ -27,7 +27,8 @@ struct ToggleModel {
 }
 
 struct ContentView: View {
-    
+    @StateObject var locationManager = LocationManager()
+
     @State var isDark: Bool = false
     @State var isLoad: Bool = false
     @State var index: Int=0
@@ -35,17 +36,40 @@ struct ContentView: View {
     @State var lastPageArray: [Int]=[0]
     @State var lastPageIdx: Int=0
     @State var Kpikey: String=""
-    
+
     @State var height: CGFloat = UIScreen.main.bounds.height/5
     @State var selectedIndex = 0
     @State private var kpiIndex = 0
     @State var width = UIScreen.main.bounds.width - 120
     @State var qaValue: CGFloat = (UIScreen.main.bounds.height > 700 ? 50: 40)
     
+    @State var lat: Double = 0.0
+    @State var long: Double = 0.0
+
     var body: some View {
+
         ZStack{
             Color("bgColor")
-            Home(isDark:$isDark).background(Color("bgColor")).colorScheme(isDark ? .dark: .light)
+//            VStack{
+//                if let location = locationManager.lastLocation {
+//                    Text("Your location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
+//                }
+//
+//                Button(action: {
+//                    locationManager.getCurrentLocation()
+//                }, label: {
+//                    Text("Location")
+//                })
+//                .frame(height: 44)
+//                .padding()
+//            }
+            Home(isDark:$isDark, lastLatitude: $lat,lastLongitude:$long).background(Color("bgColor")).colorScheme(isDark ? .dark: .light)
+                .onAppear(perform: {
+                    if let location = locationManager.lastLocation {
+                    self.lat = location.coordinate.latitude
+                    self.long = location.coordinate.longitude
+                    }
+                })
         }
         .background(Color("bgColor"))
         .onAppear {
@@ -76,6 +100,9 @@ struct ContentView_Previews: PreviewProvider {
 struct Home : View {
     
     @Binding var isDark: Bool
+    @Binding var lastLatitude : Double
+    @Binding var lastLongitude : Double
+    
     @State var width = UIScreen.main.bounds.width - 90
     // to hide view...
     @State var x = UIScreen.main.bounds.width + 90
@@ -89,16 +116,8 @@ struct Home : View {
     ]
     @State var Kpikey: String = "1"
     
-    @ObservedObject var locationManager = LocationManager()
     
-    
-    public var lastLatitude : Double {
-        (locationManager.lastLocation?.coordinate.latitude) ?? 0
-    }
-    
-    public var lastLongitude : Double {
-        (locationManager.lastLocation?.coordinate.longitude) ?? 0
-    }
+    @StateObject var locationManager = LocationManager()
     
     var body: some View{
         VStack{
@@ -114,7 +133,14 @@ struct Home : View {
                 }
                 else
                 {
-                    HomePage(isDark:$isDark, x: $x, index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, isLogin: $isLogin, lastLatitude: lastLatitude, lastLongitude: lastLongitude).background(Color("bgColor"))
+                    HomePage(isDark:$isDark, x: $x, index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, isLogin: $isLogin, lastLatitude: $lastLatitude, lastLongitude: $lastLongitude).background(Color("bgColor"))
+                        .onAppear(perform: {
+                            
+                            if let location = locationManager.lastLocation {
+                            self.lastLatitude = location.coordinate.latitude
+                            self.lastLongitude = location.coordinate.longitude
+                            }
+                        })
                         
                     
                 }
@@ -161,8 +187,8 @@ struct HomePage : View {
     @Binding var lastPageArray: [Int]
     
     @Binding var isLogin: Bool
-    @State var lastLatitude: Double
-    @State var lastLongitude: Double
+    @Binding var lastLatitude : Double
+    @Binding var lastLongitude : Double
     
     @State var streetLocation:String=""
     @State var searchAddress:String=""
@@ -192,6 +218,7 @@ struct HomePage : View {
                         .padding(.leading, self.index>0 ? 0:5)
                         .foregroundColor(Color("IconColor"))
                     Spacer()
+                    
 //                    Button(action: {
 //                        self.isDark.toggle()
 //                    }, label: {
@@ -202,19 +229,30 @@ struct HomePage : View {
 //                    })
                     
                     if self.index == 0 {
-                    Button(action: {
-                        self.isLogin.toggle()
-                    }, label: {
-                        Image("sign_out")
-                            .foregroundColor(Color("IconColor"))
-                            .padding(.leading, 5)
-                            .padding(.trailing, 10)
-                    })
+                        Button(action: {
+                            withAnimation {
+                                if let url = URL(string: "https://www.google.com") {
+                                       UIApplication.shared.open(url)
+                                   }
+                            }
+                        }, label: {
+                            Image(systemName: "magnifyingglass").foregroundColor(Color("IconColor")).padding(10)
+                        })
+                        
+                        Button(action: {
+                            self.isLogin.toggle()
+                        }, label: {
+                            Image("sign_out")
+                                .foregroundColor(Color("IconColor"))
+                                .padding(.leading, 5)
+                                .padding(.trailing, 10)
+                        })
                     }
                 }
                 .padding(.leading, 5)
             }
-            
+            .frame(height: 40)
+            Divider()
             VStack{
                 
                 switch self.index {
@@ -226,7 +264,13 @@ struct HomePage : View {
                     case 2:
                         CheckOutUIView(index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, lastLatitude:self.lastLatitude, lastLongitude:self.lastLongitude)
                     case 3:
-                        HistoryUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title).padding(.top,1)
+                        VisitReportUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title).padding(.top,1)
+                    case 4:
+                        SalesUpdateUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title).padding(.top,1)
+                    case 5:
+                        KPIDashboardUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title)
+                    case 6:
+                        GiftInventoryStockUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title).padding(.top,1)
                     default:
                         Text("Under Development")
                         Spacer()
