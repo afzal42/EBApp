@@ -27,7 +27,7 @@ struct ToggleModel {
 }
 
 struct ContentView: View {
-    @StateObject var locationManager = LocationManager()
+    @ObservedObject var locationManager = LocationManager()
 
     @State var isDark: Bool = false
     @State var isLoad: Bool = false
@@ -117,7 +117,7 @@ struct Home : View {
     @State var Kpikey: String = "1"
     
     
-    @StateObject var locationManager = LocationManager()
+    @ObservedObject var locationManager = LocationManager()
     
     var body: some View{
         VStack{
@@ -195,6 +195,8 @@ struct HomePage : View {
     @State var isFocused:Bool=true
     @State var requestSearch:Bool=true
     
+    @ObservedObject var locationManager = LocationManager()
+    
     var body : some View{
         
         VStack(spacing: 0){
@@ -258,6 +260,13 @@ struct HomePage : View {
                 switch self.index {
                     case 0:
                         HomeUIView(isLogin: $isLogin, index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, lastLatitude:self.lastLatitude, lastLongitude:self.lastLongitude)
+                            .onAppear(perform: {
+                                
+                                if let location = locationManager.lastLocation {
+                                self.lastLatitude = location.coordinate.latitude
+                                self.lastLongitude = location.coordinate.longitude
+                                }
+                            })
                     case 1:
                         CheckInUIView(index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, lastLatitude:self.lastLatitude, lastLongitude:self.lastLongitude)
                             .padding(.top,1)

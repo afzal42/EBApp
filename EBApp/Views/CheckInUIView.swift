@@ -528,7 +528,7 @@ struct CheckInUIView: View {
 
                 do {
                     let resData = try decoder.decode([VisitPurpose].self, from: data)
-                    print(resData)
+//                    print(resData)
                     for i in 0...resData.count-1 {
                         self.VisitPurposeList.append(resData[i])
                     }
@@ -565,12 +565,12 @@ struct CheckInUIView: View {
                 return
             }
             if let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
+//                print("Response data string:\n \(dataString)")
                 let decoder = JSONDecoder()
 
                 do {
                     let resData = try decoder.decode(CheckinInfo.self, from: data)
-                    print(resData)
+//                    print(resData)
                     if(resData.CHECK_OUT_STATUS==0){
                         LastCheckIn.append(resData)
                         self.CompanyTypeVal = resData.COMPANY_TYPE_ID
@@ -617,7 +617,7 @@ struct CheckInUIView: View {
                 return
             }
             if let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
+//                print("Response data string:\n \(dataString)")
                 let decoder = JSONDecoder()
 
                 do {

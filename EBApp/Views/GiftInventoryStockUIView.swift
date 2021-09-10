@@ -45,13 +45,13 @@ struct GiftInventoryStockUIView: View {
                 return
             }
             if let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
+//                print("Response data string:\n \(dataString)")
                 let decoder = JSONDecoder()
 
                 do {
                     let resData = try decoder.decode([UserGiftInfoX].self, from: data)
                     if dataString != "[]"{
-                    print(resData)
+//                    print(resData)
                     for i in 0...resData.count-1 {
                         let obj = resData[i]
                         self.UserGiftList.append(UserGiftInfo.init(SL: i+1, DEPARTMENT_NAME: obj.DEPARTMENT_NAME, PRODUCT_CODE: obj.PRODUCT_CODE, PRODUCT_NAME: obj.PRODUCT_NAME, PRODUCT_TYPE: obj.PRODUCT_TYPE, PRODUCT_COUNT: obj.PRODUCT_COUNT))

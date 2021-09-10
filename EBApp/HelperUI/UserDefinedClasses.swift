@@ -9,7 +9,7 @@ import Foundation
 
 
 public var NotificationCount: Int = 0
-public var baseUrl: String = "http://27.147.159.194:33910/"
+public var baseUrl: String = "http://27.147.159.194:33910"
 
 public var  email: String = "maruf.alam@banglalink.net"
 public var subject: String = "EB App Crash Report"

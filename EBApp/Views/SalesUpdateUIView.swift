@@ -68,13 +68,13 @@ struct SalesUpdateUIView: View {
                 return
             }
             if let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
+//                print("Response data string:\n \(dataString)")
                 let decoder = JSONDecoder()
 
                 do {
                     let resData = try decoder.decode([SalsePipelineX].self, from: data)
                     if dataString != "[]"{
-                        print(resData)
+//                        print(resData)
                         for i in 0...resData.count-1 {
                             let obj = resData[i]
                             self.SalsePipelineList.append(SalsePipeline.init(SL: i, COMPANY_ID: obj.COMPANY_ID, COMPANY_NAME: obj.COMPANY_NAME, COMPANY_TYPE: obj.COMPANY_TYPE, TOTAL_MSISDN_COUNT: obj.TOTAL_MSISDN_COUNT, EXPECTED_REVENUE: obj.EXPECTED_REVENUE, TEAM: obj.TEAM, ACTIVATION_MATURE_MONTH: obj.ACTIVATION_MATURE_MONTH))
@@ -121,13 +121,13 @@ struct SalesUpdateUIView: View {
                 return
             }
             if let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
+//                print("Response data string:\n \(dataString)")
                 let decoder = JSONDecoder()
 
                 do {
                     let resData = try decoder.decode([AgreementInfoX].self, from: data)
                     if dataString != "[]"{
-                        print(resData)
+//                        print(resData)
                         for i in 0...resData.count-1 {
                             let obj = resData[i]
                             self.AgreementInfoList.append(AgreementInfo.init(SL: i, COMPANY_ID: obj.COMPANY_ID, COMPANY_NAME: obj.COMPANY_NAME, COMPANY_SEGMENT: obj.COMPANY_SEGMENT, TOTAL_MSISDN_COUNT: obj.TOTAL_MSISDN_COUNT, BTRC_APPROVAL_STATUS: obj.BTRC_APPROVAL_STATUS))

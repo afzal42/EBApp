@@ -79,14 +79,14 @@ struct VisitReportUIView: View {
                 return
             }
             if let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
+//                print("Response data string:\n \(dataString)")
                 let decoder = JSONDecoder()
 
                 do {
                     if dataString.count > 5 {
                         if self.VisitTypeId == 0 {
                             let resData = try decoder.decode([CheckInHistoryX].self, from: data)
-                            print(resData)
+//                            print(resData)
                             for i in 0...resData.count-1 {
                                 let obj = resData[i]
                                 self.CheckInList.append(CheckinInfo.init(SL: i, COMPANY_TYPE_ID: obj.COMPANY_TYPE_ID, COMPANY_TYPE: obj.COMPANY_TYPE, COMPANY_ID: obj.COMPANY_ID, COMPANY_NAME: obj.COMPANY_NAME, COMPANY_ADDRESS: obj.COMPANY_ADDRESS, CHECK_IN_STATUS: obj.CHECK_IN_STATUS, CHECK_IN_DATE: obj.CHECK_IN_DATE, CHECK_IN_LATITUDE: obj.CHECK_IN_LATITUDE, CHECK_IN_LONGITUDE: obj.CHECK_IN_LONGITUDE, CHECK_IN_ADDRESS: obj.CHECK_IN_ADDRESS, VISIT_PURPOSE_ID: obj.VISIT_PURPOSE_ID, VISIT_PURPOSE: obj.VISIT_PURPOSE ?? "", CHECK_OUT_STATUS: obj.CHECK_OUT_STATUS, CHECK_OUT_DATE: obj.CHECK_OUT_DATE, CHECK_OUT_LATITUDE: obj.CHECK_OUT_LATITUDE, CHECK_OUT_LONGITUDE: obj.CHECK_OUT_LONGITUDE, CHECK_OUT_ADDRESS: obj.CHECK_OUT_ADDRESS, VISIT_OUTCOME_ID: obj.VISIT_OUTCOME_ID, VISIT_OUTCOME: obj.VISIT_OUTCOME, CHECK_OUT_REMARKS: obj.CHECK_OUT_REMARKS, SUCCCESS: true))

@@ -23,8 +23,9 @@ struct HomeUIView: View {
     @State var height: CGFloat = UIScreen.main.bounds.height/5
     @State var selectedIndex = 0
     @State private var kpiIndex = 0
-    @State var width = UIScreen.main.bounds.width - 120
+    @State var width = UIScreen.main.bounds.width - 10
     @State var qaValue: CGFloat = (UIScreen.main.bounds.height > 700 ? 50: 40)
+    @State var notifyHeight: CGFloat = (UIScreen.main.bounds.height > 700 ? 120: 60)
     
     @State var streetLocation:String=""
     @State var searchAddress:String=""
@@ -56,15 +57,18 @@ struct HomeUIView: View {
                                     HStack{
                                         Text(self.userName).foregroundColor(Color("IconColor")).font(.system(size: 14)).fontWeight(.semibold)
                                     }
-                                    .frame(width: self.width/2, height: 30, alignment: .leading)
+                                    .frame(width: (self.width/10)*4.5, height: 30, alignment: .leading)
                                     Spacer(minLength: 5)
                                     HStack{
-                                        
+                                        Spacer(minLength: 0)
+                                        HStack{
                                         Text("Login:").foregroundColor(Color("IconColor")).font(.system(size: 14)).fontWeight(.semibold)
-                                        Text(self.loginTime).foregroundColor(Color("IconColor")).font(.system(size: 14)).fontWeight(.thin).padding(.leading,1)
-                                        Spacer()
+                                        Text(self.loginTime).foregroundColor(Color("IconColor")).font(.system(size: 12)).fontWeight(.thin).padding(.leading,1)
+//                                        Spacer(minLength: 0)
+                                        }
+                                        .padding(.trailing,10)
                                     }
-                                    .frame(width: self.width/1.5, height: 30, alignment: .trailing)
+                                    .frame(width: (self.width/10)*5.5, height: 30, alignment: .trailing)
                                 }
                                 HStack{
                                     Text(self.business).foregroundColor(Color("IconColor")).font(.system(size: 12)).fontWeight(.semibold)
@@ -260,6 +264,7 @@ struct HomeUIView: View {
                         VStack{
 //                            ZStack{
                                 GoogleMapsView(isFocused: $isFocused, lastLatitude: self.lastLatitude, lastLongitude: self.lastLongitude)
+                                    .frame(width: UIScreen.main.bounds.width, alignment: .bottom)
                                 .onAppear(perform: {
                                     print(lastLatitude)
                                     print(lastLongitude)
@@ -272,7 +277,7 @@ struct HomeUIView: View {
             
             if notifyX >= 0 {
                 NotificationPopUp(x: $notifyX, NotificatioList: $NotificatioList)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-50, alignment: .center)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-notifyHeight, alignment: .center)
                 .shadow(color: Color.black.opacity(notifyX != 0 ? 0.1 : 0), radius: 5, x: 5, y: 0)
                 .offset(x: notifyX, y: 0)
                 .background(Color.black.opacity(notifyX == 0 ? 0.5 : 0)
@@ -307,12 +312,12 @@ struct HomeUIView: View {
                 return
             }
             if let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
+//                print("Response data string:\n \(dataString)")
                 let decoder = JSONDecoder()
 
                 do {
                     let resData = try decoder.decode([NotificationInfoX].self, from: data)
-                    print(resData)
+//                    print(resData)
                     for i in 0...resData.count-1 {
                         let obj=resData[i]
                         self.NotificatioList.append(NotificationInfo.init(SL: i, COMPANY_NAME: obj.COMPANY_NAME, OCCASION_DETAIL: obj.OCCASION_DETAIL, OCCASION_DATE: obj.OCCASION_DATE))
@@ -348,12 +353,12 @@ struct HomeUIView: View {
                 return
             }
             if let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
+//                print("Response data string:\n \(dataString)")
                 let decoder = JSONDecoder()
 
                 do {
                     let resData = try decoder.decode(CheckinInfo.self, from: data)
-                    print(resData)
+//                    print(resData)
                     if(resData.CHECK_OUT_STATUS==0){
                         LastCheckIn.append(resData)
                     }

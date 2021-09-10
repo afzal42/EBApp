@@ -213,12 +213,12 @@ struct KPIDashboardUIView: View {
                 return
             }
             if let dataString = String(data: data, encoding: .utf8) {
-                print("Response data string:\n \(dataString)")
+//                print("Response data string:\n \(dataString)")
                 let decoder = JSONDecoder()
 
                 do {
                     let resData = try decoder.decode([KpiInfoX].self, from: data)
-                    print(resData)
+//                    print(resData)
                     for i in 0...resData.count-1 {
                         
                         let obj = resData[i]
