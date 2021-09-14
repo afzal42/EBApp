@@ -52,12 +52,12 @@ struct SalesUpdateUIView: View {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = "_yy"
-        let year = inputFormatter.string(from: self.today)
-        print(year)
+//        let inputFormatter = DateFormatter()
+//        inputFormatter.dateFormat = "_yy"
+//        let year = inputFormatter.string(from: self.today)
+//        print(year)
         
-        let postString = "{'USER_NAME':'\(Login_Name)','ACCESS_KEY':'\(Access_Key)','MONTH_NAME': '\(self.MonthName)\(year)'}";
+        let postString = "{'USER_NAME':'\(Login_Name)','ACCESS_KEY':'\(Access_Key)','MONTH_NAME': '\(self.MonthName)\("_"+String(self.YearID))'}";
         // Set HTTP Request Body
         request.httpBody = postString.data(using: String.Encoding.utf8);
         
@@ -93,6 +93,7 @@ struct SalesUpdateUIView: View {
     
     
     @State var AgreementInfoList = [AgreementInfo]()
+    
     func funCorporateAgreement() {
         
         guard let url = URL(string: baseUrl+"/api/EB_AMS_User/Get_Corporate_Agreement") else { return }
@@ -105,12 +106,12 @@ struct SalesUpdateUIView: View {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let inputFormatter = DateFormatter()
-        inputFormatter.dateFormat = "_yy"
-        let year = inputFormatter.string(from: self.today)
-        print(year)
+//        let inputFormatter = DateFormatter()
+//        inputFormatter.dateFormat = "_yy"
+//        let year = inputFormatter.string(from: self.today)
+//        print(year)
         
-        let postString = "{'USER_NAME':'\(Login_Name)','ACCESS_KEY':'\(Access_Key)','MONTH_NAME': '\(self.MonthName)\(year)'}";
+        let postString = "{'USER_NAME':'\(Login_Name)','ACCESS_KEY':'\(Access_Key)','MONTH_NAME': '\(self.MonthName)\("_"+String(self.YearID))'}";
         // Set HTTP Request Body
         request.httpBody = postString.data(using: String.Encoding.utf8);
         
@@ -168,6 +169,9 @@ struct SalesUpdateUIView: View {
     @State var SalesTypeId: Int=0
     @State var MonthName: String="Jan"
     @State var MonthId: Int=1
+    @State var YearName: String=""
+    @State var YearID: Int=0
+    @State var YearList = [YearInfo]()
     
     var body: some View {
         ZStack{
@@ -286,6 +290,57 @@ struct SalesUpdateUIView: View {
                             }
                             .padding(5)
                             
+                            HStack{
+                                HStack{
+                                    Text("Year")
+                                        .font(.system(size: 14))
+                                }
+                                Spacer()
+                                
+                                HStack{
+                                    
+                                    if #available(iOS 14.0, *) {
+                                        Menu {
+                                            ForEach(self.YearList, id: \.YEAR_ID) { item in
+                                                Button(action: {
+                                                    self.YearName = item.YEAR_NAME
+                                                    self.YearID = item.YEAR_ID
+                                                }) {
+                                                    PopUpButton(title: item.YEAR_NAME)
+                                                }
+                                            }
+                                            
+                                        } label: {
+                                            HStack{
+                                                Text(YearName)
+                                                    .font(.system(size: 14))
+//                                                    .foregroundColor(.black)
+                                                Image(systemName: "chevron.down")
+                                                
+                                            }
+                                            .foregroundColor(Color("IconColor"))
+                                            .overlay(
+                                                Rectangle().frame(height: 1.0, alignment: .bottom).padding(.top, 30).foregroundColor(Color("IconColor"))
+                                            )
+                                        }
+
+                                    } else {
+                                        Image(systemName: "chevron.down").contextMenu {
+                                            ForEach(self.YearList, id: \.YEAR_ID) { item in
+                                                Button(action: {
+                                                    self.YearName = item.YEAR_NAME
+                                                    self.YearID = item.YEAR_ID
+                                                }) {
+                                                    PopUpButton(title: item.YEAR_NAME)
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                            }
+                            .padding(5)
+                            
                             
                             
                             HStack{
@@ -314,17 +369,6 @@ struct SalesUpdateUIView: View {
                         
                         
                         HStack{
-//                            HStack{
-//                            Image("disclaimer2").foregroundColor(Color.red)
-//                            }
-//                            Spacer()
-//                            HStack{
-//                                Image("calendar")
-//                                Text("\(dueDate!, formatter: Self.taskDateFormat)")
-//                                    .font(.system(size: 12))
-//                            }
-//                            .padding(.trailing, 10)
-//                            .padding(.bottom, 5)
                         }
                         .background(Color("IconColor").opacity(0.2))
                         .overlay(
@@ -472,6 +516,24 @@ struct SalesUpdateUIView: View {
                         
                         Spacer()
                     }
+                    .onAppear(perform: {
+                        for i in 20...50 {
+                            self.YearList.append(YearInfo.init(YEAR_ID: i, YEAR_NAME: "20"+String(i)) )
+                        }
+                        
+                        let inputFormatter = DateFormatter()
+                        inputFormatter.dateFormat = "yy"
+                        let year = inputFormatter.string(from: self.today)
+                        self.YearID=Int(year) ?? 20
+                        
+                        inputFormatter.dateFormat = "yyyy"
+                        self.YearName = inputFormatter.string(from: self.today)
+                        
+                        inputFormatter.dateFormat = "MMM"
+                        self.MonthName = inputFormatter.string(from: self.today)
+                        
+                    })
+                    
                 }
             }
              

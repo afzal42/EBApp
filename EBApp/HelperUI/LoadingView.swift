@@ -97,7 +97,7 @@ struct ToastView<Content>: View where Content: View {
                         Spacer()
                     }
                 }
-                .frame(width: geometry.size.width-10,
+                .frame(width: geometry.size.width-20,
                        height: 60, alignment: .center)
                 .background(Color.white)
                 .foregroundColor(Color.black)

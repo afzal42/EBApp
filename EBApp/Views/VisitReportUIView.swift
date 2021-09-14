@@ -39,6 +39,7 @@ struct VisitReportUIView: View {
         return formatter
     }()
     
+    
     var today = Date()
     var dueDate = Calendar.current.date(byAdding: .day, value: -1, to: Date())
     
@@ -46,7 +47,6 @@ struct VisitReportUIView: View {
     
     @State var CompanyVisitList = [CompanyVisit]()
     @State var ZeroCompanyList = [ZeroCompany]()
-    
     
     func funVisitHistory() {
 //        guard let url = URL(string: baseUrl+"/api/EB_AMS_User/Get_CheckIn_CheckOut_History") else { return }

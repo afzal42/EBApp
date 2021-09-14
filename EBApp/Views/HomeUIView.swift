@@ -43,11 +43,14 @@ struct HomeUIView: View {
     @State var isToast: Bool = false
     @State var ToastMsg: String = ""
     @State var notifyX: CGFloat = -1000
+    @ObservedObject var locationManager = LocationManager()
     
     @State var NotificatioList = [NotificationInfo]()
     
     var body: some View {
         ZStack{
+            
+        LoadingView(isShowing: $isLoad) {
             ToastView(isShowing: $isToast, message:$ToastMsg) {
                 ZStack{
                     VStack{
@@ -116,7 +119,7 @@ struct HomeUIView: View {
                                 if LastCheckIn.count==0{
                                     funLastCheckIn()
                                 }
-                                    
+                                
                             })
                             .padding(.top,10)
                             .padding(.leading, 10)
@@ -154,7 +157,7 @@ struct HomeUIView: View {
                                             Image("check_in")
                                                 .resizable()
                                                 .frame(width: qaValue, height: qaValue)
-                                            Text("Check-In").foregroundColor(Color("IconColor")).font(.system(size: 12))
+                                            Text("    Check-In   ").foregroundColor(Color("IconColor")).font(.system(size: 12))
                                         }
                                     })
                                     Spacer(minLength: 0)
@@ -194,7 +197,7 @@ struct HomeUIView: View {
                                             Image("check_out")
                                                 .resizable()
                                                 .frame(width: qaValue, height: qaValue)
-                                            Text("Check-Out").foregroundColor(Color("IconColor")).font(.system(size: 12))
+                                            Text("Check-Out   ").foregroundColor(Color("IconColor")).font(.system(size: 12))
                                         }
                                     })
                                 }
@@ -224,7 +227,7 @@ struct HomeUIView: View {
                                         
                                         if self.myMenu.contains("500002") {
                                             self.index = 5
-                                            self.title = "KIP Dashboard"
+                                            self.title = "KPI Dashboard"
                                             self.lastPageArray.append(5)
                                         }
                                     }, label: {
@@ -232,7 +235,7 @@ struct HomeUIView: View {
                                             Image("Q1")
                                                 .resizable()
                                                 .frame(width: qaValue, height: qaValue)
-                                            Text("KIP Dashboard").foregroundColor(Color("IconColor")).font(.system(size: 12))
+                                            Text("KPI Dashboard").foregroundColor(Color("IconColor")).font(.system(size: 12))
                                         }
                                     })
                                     Spacer(minLength: 0)
@@ -263,9 +266,21 @@ struct HomeUIView: View {
                         Divider()
                         VStack{
 //                            ZStack{
-                                GoogleMapsView(isFocused: $isFocused, lastLatitude: self.lastLatitude, lastLongitude: self.lastLongitude)
+                            GoogleMapsView(isLoad:$isLoad, isFocused: $isFocused, lastLatitude: self.lastLatitude, lastLongitude: self.lastLongitude)
                                     .frame(width: UIScreen.main.bounds.width, alignment: .bottom)
                                 .onAppear(perform: {
+                                    if (self.lastLatitude<=1 && self.lastLongitude<=1){
+                                        self.isLoad=true
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(20), execute: {
+                                            if let location = locationManager.lastLocation {
+                                                self.lastLatitude = location.coordinate.latitude
+                                                self.lastLongitude = location.coordinate.longitude
+                                            }
+                                            if (self.lastLatitude>1 || self.lastLongitude>1){
+                                                self.isLoad=false
+                                            }
+                                        })
+                                    }
                                     print(lastLatitude)
                                     print(lastLongitude)
                                 })
@@ -274,6 +289,7 @@ struct HomeUIView: View {
                     }
                 }
             }
+        }
             
             if notifyX >= 0 {
                 NotificationPopUp(x: $notifyX, NotificatioList: $NotificatioList)

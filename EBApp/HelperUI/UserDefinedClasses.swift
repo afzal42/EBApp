@@ -284,6 +284,10 @@ public struct NotificationInfoX: Codable {
     let OCCASION_DATE: String
 }
 
+public struct YearInfo: Decodable {
+    let YEAR_ID: Int
+    let YEAR_NAME: String
+}
 
 //Afzal Hossain
 
@@ -352,4 +356,12 @@ func formatPoints(from: Int) -> String {
     } else {
         return "\(Int(number))"
     }
+}
+
+func formatDate(dt: String) -> Date? {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd-MMM-yyyy"
+    dateFormatter.timeZone = TimeZone.current
+    dateFormatter.locale = Locale.current
+    return dateFormatter.date(from: dt)
 }

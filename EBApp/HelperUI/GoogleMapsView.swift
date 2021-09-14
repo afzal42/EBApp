@@ -4,6 +4,7 @@ import SwiftUI
 import GoogleMaps
 
 struct GoogleMapsView: UIViewRepresentable {
+    @Binding var isLoad: Bool
     @State var streetLocation: String=""
     @Binding var isFocused: Bool
     @State var requestSearch: Bool=false

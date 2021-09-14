@@ -17,14 +17,14 @@ struct KPIDashboardUIView: View {
     @State var tableHeader = ["KPI Parameter","Indicator","Target","Achivement","Achivement%","Growth%"]
     
     @State var OptionId: Int=0
-    @State private var allTransactions:[Transaction] = [
-        .init(xValue: 100, yValue: 200, itemType: Transaction.ItemType.itemAch),
-        .init(xValue: 33, yValue: 4, itemType: Transaction.ItemType.itemAch),
-            .init(xValue: 12, yValue: 145, itemType: Transaction.ItemType.itemAch),
-            .init(xValue: 45, yValue: 103, itemType: Transaction.ItemType.itemAch),
-            .init(xValue: 35, yValue: 200, itemType: Transaction.ItemType.itemAch),
-            .init(xValue: 79, yValue: 45, itemType: Transaction.ItemType.itemAch)
-    ]
+//    @State private var allTransactions:[Transaction] = [
+//        .init(xValue: 100, yValue: 200, itemType: Transaction.ItemType.itemAch),
+//        .init(xValue: 33, yValue: 4, itemType: Transaction.ItemType.itemAch),
+//            .init(xValue: 12, yValue: 145, itemType: Transaction.ItemType.itemAch),
+//            .init(xValue: 45, yValue: 103, itemType: Transaction.ItemType.itemAch),
+//            .init(xValue: 35, yValue: 200, itemType: Transaction.ItemType.itemAch),
+//            .init(xValue: 79, yValue: 45, itemType: Transaction.ItemType.itemAch)
+//    ]
     
     var body: some View {
         ZStack{
@@ -116,9 +116,12 @@ struct KPIDashboardUIView: View {
                                         .padding(.leading, 2)
 //
                                         HStack{
-                                            Text(String(i.INDICATOR))
-                                                .fontWeight(.bold)
-                                                .font(.system(size: 8)).multilineTextAlignment(.center)
+                                            Image(i.INDICATOR < 4 ? (i.INDICATOR<3 ? "checkmark.circle.fill" : "checkmark.circle.fill.light"):"exclamationmark.circle.fill")
+                                                //.foregroundColor(i.ImgVal > 0 ? Color.green.opacity(i.ImgVal == 1 ? 1 : 0.5) : Color.yellow)
+
+//                                            Text(String(i.INDICATOR))
+//                                                .fontWeight(.bold)
+//                                                .font(.system(size: 8)).multilineTextAlignment(.center)
                                         }.frame(width: UIScreen.main.bounds.width/7.5)
 //
                                         HStack{

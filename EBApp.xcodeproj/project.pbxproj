@@ -50,23 +50,6 @@
 		FEDB156B26E54CB200185FAA /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEDB156A26E54CB200185FAA /* Transaction.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FEDB155D26E5484800185FAA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FEDB155826E5484800185FAA /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 65AD9E95D9ED4DC0BD73A743;
-			remoteInfo = Charts;
-		};
-		FEDB155F26E5484800185FAA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FEDB155826E5484800185FAA /* Charts.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 1CBBC58C6CE1EBEE9852CE41;
-			remoteInfo = ChartsTests;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		13FDABA2C9E39ABE004B6291 /* Pods-EBApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EBApp.release.xcconfig"; path = "Target Support Files/Pods-EBApp/Pods-EBApp.release.xcconfig"; sourceTree = "<group>"; };
 		735831D3B8D62109037508A5 /* Pods_EBApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EBApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,7 +92,6 @@
 		FEDB154B26E53D0900185FAA /* CompanyPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompanyPopUp.swift; sourceTree = "<group>"; };
 		FEDB155126E5471600185FAA /* KPIDashboardUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KPIDashboardUIView.swift; sourceTree = "<group>"; };
 		FEDB155626E547A300185FAA /* WineTransaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineTransaction.swift; sourceTree = "<group>"; };
-		FEDB155826E5484800185FAA /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
 		FEDB156426E5496400185FAA /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		FEDB156626E549E900185FAA /* HelperFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFile.swift; sourceTree = "<group>"; };
 		FEDB156826E54BB600185FAA /* BalloonMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BalloonMarker.swift; sourceTree = "<group>"; };
@@ -247,7 +229,6 @@
 				FE7BA38226D7A3FA00E00E36 /* Assets.xcassets */,
 				FE7BA38726D7A3FA00E00E36 /* LaunchScreen.storyboard */,
 				FE7BA38A26D7A3FA00E00E36 /* Info.plist */,
-				FEDB155826E5484800185FAA /* Charts.xcodeproj */,
 				FE7BA38426D7A3FA00E00E36 /* Preview Content */,
 			);
 			path = EBApp;
@@ -283,15 +264,6 @@
 				FE46AC8526E7AD1000E78889 /* BarChart.swift */,
 			);
 			path = ChartsUI;
-			sourceTree = "<group>";
-		};
-		FEDB155926E5484800185FAA /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FEDB155E26E5484800185FAA /* Charts.framework */,
-				FEDB156026E5484800185FAA /* ChartsTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -342,35 +314,12 @@
 			mainGroup = FE7BA37026D7A3F700E00E36;
 			productRefGroup = FE7BA37A26D7A3F700E00E36 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = FEDB155926E5484800185FAA /* Products */;
-					ProjectRef = FEDB155826E5484800185FAA /* Charts.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				FE7BA37826D7A3F700E00E36 /* EBApp */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		FEDB155E26E5484800185FAA /* Charts.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Charts.framework;
-			remoteRef = FEDB155D26E5484800185FAA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FEDB156026E5484800185FAA /* ChartsTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ChartsTests.xctest;
-			remoteRef = FEDB155F26E5484800185FAA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FE7BA37726D7A3F700E00E36 /* Resources */ = {

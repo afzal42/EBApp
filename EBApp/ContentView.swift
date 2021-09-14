@@ -195,10 +195,13 @@ struct HomePage : View {
     @State var isFocused:Bool=true
     @State var requestSearch:Bool=true
     
+    @State var isToast: Bool = false
+    @State var msg: String = ""
+    
     @ObservedObject var locationManager = LocationManager()
     
     var body : some View{
-        
+            
         VStack(spacing: 0){
             
             VStack{
@@ -260,13 +263,7 @@ struct HomePage : View {
                 switch self.index {
                     case 0:
                         HomeUIView(isLogin: $isLogin, index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, lastLatitude:self.lastLatitude, lastLongitude:self.lastLongitude)
-                            .onAppear(perform: {
-                                
-                                if let location = locationManager.lastLocation {
-                                self.lastLatitude = location.coordinate.latitude
-                                self.lastLongitude = location.coordinate.longitude
-                                }
-                            })
+                            
                     case 1:
                         CheckInUIView(index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, lastLatitude:self.lastLatitude, lastLongitude:self.lastLongitude)
                             .padding(.top,1)
@@ -289,7 +286,6 @@ struct HomePage : View {
         }
 //        .background(Color.primary.opacity(0.1))
 //        .edgesIgnoringSafeArea(.all)
-        
     }
 }
 
