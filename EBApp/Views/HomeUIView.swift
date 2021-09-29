@@ -45,7 +45,7 @@ struct HomeUIView: View {
     @State var notifyX: CGFloat = -1000
     @ObservedObject var locationManager = LocationManager()
     
-    @State var NotificatioList = [NotificationInfo]()
+//    @State var NotificatioList = [NotificationInfo]()
     
     var body: some View {
         ZStack{
@@ -55,7 +55,7 @@ struct HomeUIView: View {
                 ZStack{
                     VStack{
                         VStack(spacing: 10){
-                            VStack{
+                            VStack(spacing: 10){
                                 HStack{
                                     HStack{
                                         Text(self.userName).foregroundColor(Color("IconColor")).font(.system(size: 14)).fontWeight(.semibold)
@@ -76,32 +76,31 @@ struct HomeUIView: View {
                                 HStack{
                                     Text(self.business).foregroundColor(Color("IconColor")).font(.system(size: 12)).fontWeight(.semibold)
                                     Spacer()
-                                    HStack{
-                                        Button(action: {
-                                            funNotificationList()
-                                            withAnimation {
-                                                self.notifyX = 0
-                                            }
-                                        }) {
-                                            ZStack{
-                                                Image(systemName: "bell").foregroundColor(Color("btnColor"))
-                                                if(NotificationCount>0){
-                                                Image(systemName: "\(NotificationCount).circle.fill")
-                                                    .resizable()
-                                                    .foregroundColor(Color("btnColor"))
-                                                    .frame(width: 8, height: 8)
-                                                    .offset(x: -5, y: 5)
-                                                }
-                                            }
-                                        }
-                                    }.padding(.trailing, 15)
+//                                    HStack{
+//                                        Button(action: {
+//                                            funNotificationList()
+//                                            withAnimation {
+//                                                self.notifyX = 0
+//                                            }
+//                                        }) {
+//                                            ZStack{
+//                                                Image(systemName: "bell").foregroundColor(Color("btnColor"))
+//                                                if(NotificationCount>0){
+//                                                Image(systemName: "\(NotificationCount).circle.fill")
+//                                                    .resizable()
+//                                                    .foregroundColor(Color("btnColor"))
+//                                                    .frame(width: 8, height: 8)
+//                                                    .offset(x: -5, y: 5)
+//                                                }
+//                                            }
+//                                        }
+//                                    }.padding(.trailing, 15)
                                 }
                                 HStack{
                                     Text(self.fullRole).foregroundColor(Color("IconColor")).font(.system(size: 12)).fontWeight(.semibold)
                                     Spacer()
                                 }
                             }
-                            
                             .onAppear(perform: {
                                 
                                 let defaults = UserDefaults.standard
@@ -197,7 +196,7 @@ struct HomeUIView: View {
                                             Image("check_out")
                                                 .resizable()
                                                 .frame(width: qaValue, height: qaValue)
-                                            Text("Check-Out   ").foregroundColor(Color("IconColor")).font(.system(size: 12))
+                                            Text("      Check-Out        ").foregroundColor(Color("IconColor")).font(.system(size: 12))
                                         }
                                     })
                                 }
@@ -250,7 +249,7 @@ struct HomeUIView: View {
                                             Image("Q6")
                                                 .resizable()
                                                 .frame(width: qaValue, height: qaValue)
-                                            Text("Gift Inv. Stock").foregroundColor(Color("IconColor")).font(.system(size: 12))
+                                            Text("Gift Inventory Stock").foregroundColor(Color("IconColor")).font(.system(size: 12))
                                         }
                                     })
                                 }
@@ -261,7 +260,8 @@ struct HomeUIView: View {
                         }
                         .background(Color("BarColor"))
                         .padding(.top, 0).cornerRadius(3.0)
-                        .offset(y:10)
+                            .padding(.bottom,5)
+                        .offset(y:0)
                         }
                         Divider()
                         VStack{
@@ -289,63 +289,12 @@ struct HomeUIView: View {
                     }
                 }
             }
-        }
-            
-            if notifyX >= 0 {
-                NotificationPopUp(x: $notifyX, NotificatioList: $NotificatioList)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-notifyHeight, alignment: .center)
-                .shadow(color: Color.black.opacity(notifyX != 0 ? 0.1 : 0), radius: 5, x: 5, y: 0)
-                .offset(x: notifyX, y: 0)
-                .background(Color.black.opacity(notifyX == 0 ? 0.5 : 0)
-                .onTapGesture {
-                    self.notifyX = -800
-                })
-            }
-            
+        } 
             
         }
     }
     
-    func funNotificationList() {
-        guard let url = URL(string: baseUrl+"/api/EB_AMS_User/Get_Notification") else { return }
-        
-        let defaults = UserDefaults.standard
-        
-        let Login_Name = defaults.string(forKey: defaultsKeys.Login_Name)!
-        let Access_Key = defaults.string(forKey: defaultsKeys.Access_Key)!
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let postString = "{'USER_NAME':'\(Login_Name)','ACCESS_KEY':'\(Access_Key)'}";
-        // Set HTTP Request Body
-        request.httpBody = postString.data(using: String.Encoding.utf8);
-        
-        self.NotificatioList.removeAll()
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            guard let data = data else {
-                return
-            }
-            if let dataString = String(data: data, encoding: .utf8) {
-//                print("Response data string:\n \(dataString)")
-                let decoder = JSONDecoder()
-
-                do {
-                    let resData = try decoder.decode([NotificationInfoX].self, from: data)
-//                    print(resData)
-                    for i in 0...resData.count-1 {
-                        let obj=resData[i]
-                        self.NotificatioList.append(NotificationInfo.init(SL: i, COMPANY_NAME: obj.COMPANY_NAME, OCCASION_DETAIL: obj.OCCASION_DETAIL, OCCASION_DATE: obj.OCCASION_DATE))
-                    }
-                    
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-        }
-        .resume()
-    }
+    
     
     func funLastCheckIn() {
         guard let url = URL(string: baseUrl+"/api/EB_AMS_User/Get_Last_Check_In_Info") else { return }

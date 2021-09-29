@@ -50,19 +50,6 @@ struct ContentView: View {
 
         ZStack{
             Color("bgColor")
-//            VStack{
-//                if let location = locationManager.lastLocation {
-//                    Text("Your location: \(location.coordinate.latitude), \(location.coordinate.longitude)")
-//                }
-//
-//                Button(action: {
-//                    locationManager.getCurrentLocation()
-//                }, label: {
-//                    Text("Location")
-//                })
-//                .frame(height: 44)
-//                .padding()
-//            }
             Home(isDark:$isDark, lastLatitude: $lat,lastLongitude:$long).background(Color("bgColor")).colorScheme(isDark ? .dark: .light)
                 .onAppear(perform: {
                     if let location = locationManager.lastLocation {
@@ -197,95 +184,172 @@ struct HomePage : View {
     
     @State var isToast: Bool = false
     @State var msg: String = ""
+    @State var notifyX: CGFloat = -1000
+    @State var NotificatioList = [NotificationInfo]()
+    @State var notifyHeight: CGFloat = (UIScreen.main.bounds.height > 700 ? 120: 60)
     
     @ObservedObject var locationManager = LocationManager()
     
     var body : some View{
-            
-        VStack(spacing: 0){
-            
-            VStack{
-                HStack{
-                    if self.index > 0 {
-                        Button(action: {
-                            self.index=0
-                            self.title="Home"
-                        }, label: {
-                            Image(systemName: "chevron.left")
-                                .renderingMode(.template)
-                                .foregroundColor(Color("IconColor"))
-                                .padding(.trailing, 10)
-                        })
-                    }
-                    Text(self.title)
-                        .fontWeight(.bold)
-                        .font(.system(size: 20))
-                        .padding(.leading, self.index>0 ? 0:5)
-                        .foregroundColor(Color("IconColor"))
-                    Spacer()
-                    
-//                    Button(action: {
-//                        self.isDark.toggle()
-//                    }, label: {
-//                        Image(systemName: "radio")
-//                            .foregroundColor(Color("IconColor"))
-//                            .padding(.leading, 5)
-//                            .padding(.trailing, 10)
-//                    })
-                    
-                    if self.index == 0 {
-                        Button(action: {
-                            withAnimation {
-                                if let url = URL(string: "https://www.google.com") {
-                                       UIApplication.shared.open(url)
-                                   }
-                            }
-                        }, label: {
-                            Image(systemName: "magnifyingglass").foregroundColor(Color("IconColor")).padding(10)
-                        })
-                        
-                        Button(action: {
-                            self.isLogin.toggle()
-                        }, label: {
-                            Image("sign_out")
-                                .foregroundColor(Color("IconColor"))
-                                .padding(.leading, 5)
-                                .padding(.trailing, 10)
-                        })
-                    }
-                }
-                .padding(.leading, 5)
-            }
-            .frame(height: 40)
-            Divider()
-            VStack{
+        ZStack{
+            VStack(spacing: 0){
                 
-                switch self.index {
-                    case 0:
-                        HomeUIView(isLogin: $isLogin, index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, lastLatitude:self.lastLatitude, lastLongitude:self.lastLongitude)
-                            
-                    case 1:
-                        CheckInUIView(index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, lastLatitude:self.lastLatitude, lastLongitude:self.lastLongitude)
-                            .padding(.top,1)
-                    case 2:
-                        CheckOutUIView(index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, lastLatitude:self.lastLatitude, lastLongitude:self.lastLongitude)
-                    case 3:
-                        VisitReportUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title).padding(.top,1)
-                    case 4:
-                        SalesUpdateUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title).padding(.top,1)
-                    case 5:
-                        KPIDashboardUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title)
-                    case 6:
-                        GiftInventoryStockUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title).padding(.top,1)
-                    default:
-                        Text("Under Development")
+                VStack{
+                    HStack{
+                        if self.index > 0 {
+                            Button(action: {
+                                self.index=0
+                                self.title="Home"
+                            }, label: {
+                                Image(systemName: "chevron.left")
+                                    .renderingMode(.template)
+                                    .foregroundColor(Color("IconColor"))
+                                    .padding(.trailing, 10)
+                            })
+                        }
+                        Text(self.title)
+                            .fontWeight(.bold)
+                            .font(.system(size: 20))
+                            .padding(.leading, self.index>0 ? 0:5)
+                            .foregroundColor(Color("IconColor"))
                         Spacer()
+                        
+    //                    Button(action: {
+    //                        self.isDark.toggle()
+    //                    }, label: {
+    //                        Image(systemName: "radio")
+    //                            .foregroundColor(Color("IconColor"))
+    //                            .padding(.leading, 5)
+    //                            .padding(.trailing, 10)
+    //                    })
+                        
+                        if self.index == 0 {
+                            
+                            Button(action: {
+                                funNotificationList()
+                                withAnimation {
+                                    self.notifyX = 0
+                                }
+                            }) {
+                                ZStack{
+                                    Image(systemName: "bell").foregroundColor(Color("btnColor"))
+                                    if(NotificationCount>0){
+                                    Image(systemName: "\(NotificationCount).circle.fill")
+                                        .resizable()
+                                        .foregroundColor(Color("btnColor"))
+                                        .frame(width: 8, height: 8)
+                                        .offset(x: -5, y: 5)
+                                    }
+                                }
+                            }
+                            
+                            Button(action: {
+                                withAnimation {
+                                    if let url = URL(string: "https://www.google.com") {
+                                           UIApplication.shared.open(url)
+                                       }
+                                }
+                            }, label: {
+                                Image(systemName: "globe").foregroundColor(Color("IconColor")).padding(10)
+                            })
+                            
+                            Button(action: {
+                                
+                                let defaults = UserDefaults.standard
+                                defaults.set(nil, forKey: defaultsKeys.User_Name)
+                                defaults.set(nil, forKey: defaultsKeys.Access_Key)
+                                self.isLogin.toggle()
+                            }, label: {
+                                Image("sign_out")
+                                    .foregroundColor(Color("IconColor"))
+                                    .padding(.leading, 5)
+                                    .padding(.trailing, 10)
+                            })
+                        }
+                    }
+                    .padding(.leading, 5)
+                }
+                .frame(height: 40)
+                Divider()
+                VStack{
+                    
+                    switch self.index {
+                        case 0:
+                            HomeUIView(isLogin: $isLogin, index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, lastLatitude:self.lastLatitude, lastLongitude:self.lastLongitude)
+                                
+                        case 1:
+                            CheckInUIView(index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, lastLatitude:self.lastLatitude, lastLongitude:self.lastLongitude)
+                                .padding(.top,1)
+                        case 2:
+                            CheckOutUIView(index: $index, title: $title, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, lastLatitude:self.lastLatitude, lastLongitude:self.lastLongitude)
+                        case 3:
+                            VisitReportUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title).padding(.top,1)
+                        case 4:
+                            SalesUpdateUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title).padding(.top,1)
+                        case 5:
+                            KPIDashboardUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title)
+                        case 6:
+                            GiftInventoryStockUIView(index: $index, lastPageIdx: $lastPageIdx, lastPageArray: $lastPageArray, title: $title).padding(.top,1)
+                        default:
+                            Text("Under Development")
+                            Spacer()
+                    }
                 }
             }
             
+            if notifyX >= 0 {
+                NotificationPopUp(x: $notifyX, NotificatioList: $NotificatioList)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-notifyHeight, alignment: .center)
+                .shadow(color: Color.black.opacity(notifyX != 0 ? 0.1 : 0), radius: 5, x: 5, y: 0)
+                .offset(x: notifyX, y: 0)
+                .background(Color.black.opacity(notifyX == 0 ? 0.5 : 0)
+                .onTapGesture {
+                    self.notifyX = -800
+                })
+            }
         }
-//        .background(Color.primary.opacity(0.1))
-//        .edgesIgnoringSafeArea(.all)
+    }
+    
+    
+    func funNotificationList() {
+        guard let url = URL(string: baseUrl+"/api/EB_AMS_User/Get_Notification") else { return }
+        
+        let defaults = UserDefaults.standard
+        
+        let Login_Name = defaults.string(forKey: defaultsKeys.Login_Name)!
+        let Access_Key = defaults.string(forKey: defaultsKeys.Access_Key)!
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let postString = "{'USER_NAME':'\(Login_Name)','ACCESS_KEY':'\(Access_Key)'}";
+        // Set HTTP Request Body
+        request.httpBody = postString.data(using: String.Encoding.utf8);
+        
+        self.NotificatioList.removeAll()
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard let data = data else {
+                return
+            }
+            if let dataString = String(data: data, encoding: .utf8) {
+//                print("Response data string:\n \(dataString)")
+                let decoder = JSONDecoder()
+
+                do {
+                    let resData = try decoder.decode([NotificationInfoX].self, from: data)
+//                    print(resData)
+                    for i in 0...resData.count-1 {
+                        let obj=resData[i]
+                        self.NotificatioList.append(NotificationInfo.init(SL: i, COMPANY_NAME: obj.COMPANY_NAME, OCCASION_DETAIL: obj.OCCASION_DETAIL, OCCASION_DATE: obj.OCCASION_DATE))
+                    }
+                    
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        .resume()
     }
 }
 

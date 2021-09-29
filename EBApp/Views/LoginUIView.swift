@@ -26,7 +26,7 @@ struct LoginUIView: View {
     @State var isLoad: Bool = false
     @State var appVersion: String = ""
     @State var appName: String = ""
-    @State var ReleaseDate: String = "02-02-1990"
+    @State var ReleaseDate: String = "12-09-2021"
     @ObservedObject var locationManager = LocationManager()
 //    func handleLogTokenTouch() {
 //        let token = Messaging.messaging().fcmToken
@@ -74,8 +74,8 @@ struct LoginUIView: View {
                                         Spacer()
                                     }
                                     .padding(.leading, 10)
-                                    
-                                    Text("Login").font(.title)
+                                    .padding(.top, 5)
+//                                    Text("Login").font(.title)
                                     HStack{
                                         Image("logo").resizable() .padding(12)
                                             .frame(width: 110, height: 135, alignment: .center)
